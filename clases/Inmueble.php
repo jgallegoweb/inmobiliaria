@@ -5,8 +5,9 @@
  * @author Javier
  */
 class Inmueble {
-    private $id, $direccion, $poblacion, $codigopostal, $provincia, $fechapubli, $tipo, $precio, $tipooferta, $arrayfotos;
-    function __construct($id=null, $direccion=null, $poblacion=null, $codigopostal=null, $provincia=null, $fechapubli=null, $tipo='Piso', $precio=null, $tipooferta='alquiler', $arrayfotos=null) {
+    private $id, $direccion, $poblacion, $codigopostal, $provincia, $fechapubli, $tipo, $precio, $tipooferta, $descripcion, $habitaciones, $banos, $fotos;
+    function __construct($id=null, $direccion=null, $poblacion=null, $codigopostal=null, 
+            $provincia=null, $fechapubli=null, $tipo='Piso', $precio=null, $tipooferta='alquiler', $descripcion="", $habitaciones=0, $banos=0, $fotos=null) {
         $this->id = $id;
         $this->direccion = $direccion;
         $this->poblacion = $poblacion;
@@ -16,12 +17,31 @@ class Inmueble {
         $this->tipo = $tipo;
         $this->precio = $precio;
         $this->tipooferta = $tipooferta;
-        $this->arrayfotos = $arrayfotos;
+        $this->descripcion = $descripcion;
+        $this->habitaciones = $habitaciones;
+        $this->banos = $banos;
+        $this->fotos = $fotos;
     }
     
     /*
      * Falta por implementar el método set
      */
+    function set($datos, $inicio=0){
+        $this->id = $datos[0+$inicio];
+        $this->direccion = $datos[1+$inicio];
+        $this->poblacion = $datos[2+$inicio];
+        $this->codigopostal = $datos[3+$inicio];
+        $this->provincia = $datos[4+$inicio];
+        $this->fechapubli = $datos[5+$inicio];
+        $this->tipo = $datos[6+$inicio];
+        $this->precio = $datos[7+$inicio];
+        $this->tipooferta = $datos[8+$inicio];
+        $this->descripcion = $datos[9+$inicio];
+        $this->habitaciones = $datos[10+$inicio];
+        $this->banos = $datos[11+$inicio];
+        $this->fotos = $datos[12+$inicio];
+    }
+    
     function setId($id) {
         $this->id = $id;
     }
@@ -58,8 +78,20 @@ class Inmueble {
         $this->tipooferta = $tipooferta;
     }
 
-    function setArrayfotos($arrayfotos) {
-        $this->arrayfotos = $arrayfotos;
+    function setDescripcion($descripcion) {
+        $this->descripcion = $descripcion;
+    }
+
+    function setHabitaciones($habitaciones) {
+        $this->habitaciones = $habitaciones;
+    }
+
+    function setBanos($banos) {
+        $this->banos = $banos;
+    }
+    
+    function setFotos($fotos) {
+        $this->fotos = $fotos;
     }
 
     function getId() {
@@ -97,11 +129,21 @@ class Inmueble {
     function getTipooferta() {
         return $this->tipooferta;
     }
-
-    function getArrayfotos() {
-        return $this->arrayfotos;
+    function getDescripcion() {
+        return $this->descripcion;
     }
 
+    function getHabitaciones() {
+        return $this->habitaciones;
+    }
+
+    function getBanos() {
+        return $this->banos;
+    }
+
+    function getFotos() {
+        return $this->fotos;
+    }
 
 }
 
@@ -116,5 +158,8 @@ create table inmueble(
   fechapubli datetime not null,
   tipo enum('Piso', 'Casa', 'Apartamento', 'Estudio', 'Chalet', 'Garaje', 'Local', 'Oficina') not null,
   precio numeric(10,2) not null,
-  tipooferta enum('alquiler', 'venta') not null
+  tipooferta enum('alquiler', 'venta') not null,
+  descripcion varchar(255) not null,
+  habitaciones tinyint(3) not null,
+  banos tinyint(3) not null
 ) engine=innodb charset=utf8 collate=utf8_unicode_ci;*/
