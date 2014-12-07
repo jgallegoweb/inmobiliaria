@@ -16,7 +16,7 @@
  * Permite la subida de uno o varios ficheros simultaneamente.
  */
 class SubirMultiple {
-    private $inputname, $tamMax, $tamMaxTotal, $extensiones, $tipos, $accion, $destino, $crearCarpeta, $nuevoNombre;
+    private $inputname, $tamMax, $tamMaxTotal, $extensiones, $tipos, $accion, $destino, $crearCarpeta, $nuevoNombre, $nombresSubidos;
     private $cantidadMax, $accionExcede;
     private $error, $errorPHP, $listaErrores;
     
@@ -40,6 +40,7 @@ class SubirMultiple {
         $this->accionExcede = SubirMultiple::OMITIR_TODO; //si algún archivo sobrepasa tamaño o numero no se sube ninguno
         $this->cantidadMax = 10; //numero archivos permitidos 10
         $this->listaErrores = Array();
+        $this->nombresSubidos = Array();
     }
     /**
      * Comprueba que la extension está permitida
@@ -298,6 +299,15 @@ class SubirMultiple {
         return $cadenaerror;
     }
     /**
+     * Devuelve todos los nombres de los archivos subidos
+     * @access public
+     * @return Array Devuelve un array con los nombres de
+     * de los archivos que se han subido 
+     */
+    public function getNombres(){
+        return $this->nombresSubidos;
+    }
+    /**
      * Establece un nombre generico para las subidas.
      * @access public
      * @param string $nom cadena con el nuevo nombre
@@ -430,6 +440,8 @@ class SubirMultiple {
             if(!move_uploaded_file($origen, $lugardestino)){
                 $this->error = SubirMultiple::ERROR_SUBIDA;
                 $this->listaErrores[$archivos['name'][$i]] = SubirMultiple::ERROR_SUBIDA;
+            }else{
+                $this->nombresSubidos[] = $lugardestino;
             }
             $totalsubida += $archivos['size'][$i];
             $contador++;
