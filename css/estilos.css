@@ -55,43 +55,63 @@ label{
 .clear{
     clear: both;
 }
+/*******************************************************************************/
 .anuncio{
-    position: relative;
-    width: 800px;
-    height: 400px;
-    margin: 0 auto;
-    background-color: #141414;
-    margin-top: 20px;
-    border-radius: 10px 10px 0px 0px;
-    overflow: hidden;
-    background-size: 800px;
-    overflow: hidden;
-    background-position-y: -100px;
+    position:relative;
+    float:left;
     -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
--moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
-box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    margin-top: 25px;
 }
-.anuncion img{
-    z-index: -1;
-}
-.foto{
-    width: 100%;
-}
-.info{
-    padding: 10px;
-    color: white;
-    background-color: rgba(25,25,25, 0.7);
-    position:absolute;
-    bottom: 0px;
-    width: 100%;
-}
+
 .sec{
     font-weight: bold;
 }
 .info .infb{
-    width: 40%;
+    width: 190px;
     float: left;
 }
 .titulocasa{
     font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.info{
+    position:absolute;
+    bottom: 0px;
+    
+    padding: 10px;
+    width: 380px;
+    background-color: rgba(255,255,255,0.7);
+    z-index: 100;
+}
+.foto{
+    width: 400px;
+    height: 265px;
+    overflow: hidden;
+}
+.sobrefoto{
+    position: absolute;
+    bottom: 0px;
+    width: 400px;
+    height: 265px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.5);
+    visibility: hidden;
+    text-align: center;
+    line-height: 50px;
+}
+.anuncio:hover .sobrefoto{
+    visibility: visible;
+}
+#tablon{
+    width: 825px; margin: 0 auto; background-color: #000;
+}
+.anuncio:nth-child(2n){
+    margin-left: 25px;
+}
+.foto img{ 
+    width: 400px;
 }

@@ -49,8 +49,26 @@ class ModeloInmueble {
         }
     }
     function delete(Inmueble $objeto){
+        if($this->deleteFotos($objeto->getId())==-1){
+            return -1;
+        }
         $sql="DELETE FROM $this->tabla WHERE id = :id";
         $param['id']=$objeto->getId();
+        $r=$this->bd->setConsulta($sql, $param);
+        if(!$r){
+            return -1;
+        }
+        return $this->bd->getNumeroFilas();
+    }
+    function deleteFotos($idcasa){
+        $param['idcasa']=$idcasa;
+        $sql = "select foto from $this->tablafotos WHERE idcasa = :idcasa";
+        $this->bd->setConsulta($sql, $param);
+        while($fila = $this->bd->getFila()){
+            unlink($fila[0]);
+        }
+        $sql = "DELETE from $this->tablafotos WHERE idcasa = :idcasa";
+        
         $r=$this->bd->setConsulta($sql, $param);
         if(!$r){
             return -1;

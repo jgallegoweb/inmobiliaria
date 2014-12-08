@@ -70,37 +70,46 @@ $filas = $modelo->getList($condicion, $param);
             </form>
         </section>
         <section>
+            <div id="tablon">
             <?php
                 foreach($filas as $key => $objeto){
                     $filafotos = $modelo->getListFotos($objeto->getId()); 
             ?>
-            <div class="anuncio" style="background-image: url('<?php echo $filafotos[0]; ?>')">
-                <div class="info">
-                    <span class="titulocasa"><?php echo $objeto->getDireccion(); ?> <?php echo $objeto->getPoblacion(); ?> ( <?php echo $objeto->getCodigopostal(); ?> ) </span>
-                    <div class="infb">
-                        <span class="sec">Dirección: </span><?php echo $objeto->getDireccion(); ?><br>
-                        <span class="sec">Población: </span><?php echo $objeto->getPoblacion(); ?> ( <?php echo $objeto->getCodigopostal(); ?> )<br>
-                        <span class="sec">Provincia: </span><?php echo $objeto->getProvincia(); ?><br>
-                        <span class="sec">Publicado el: </span><?php echo $objeto->getFechapubli(); ?><br>
-                        <span class="sec">Tipo: </span><?php echo $objeto->getTipo(); ?><br>
+                <div class="anuncio">
+                    <div class="foto">
+                        <img src="<?php echo $filafotos[0]; ?>">
                     </div>
-                    <div class="infb">
-                        <span class="sec">Precio: </span><?php echo $objeto->getPrecio(); ?>€ ( <?php echo $objeto->getTipooferta(); ?> )<br>
-                        <span class="sec">Tipo: </span><?php echo $objeto->getDescripcion(); ?><br>
-                        <span class="sec">Nº habitaciones: </span><?php echo $objeto->getHabitaciones() ?><br>
-                        <span class="sec">Nº baños: </span><?php echo $objeto->getBanos(); ?><br>
+                    <a href="hol.php"> 
+                        <div class="sobrefoto">
+                            Ver más fotos
+                        </div>
+                    </a>
+                    <div class="info">
+                        <span class="titulocasa"><?php echo $objeto->getDireccion(); ?> <?php echo $objeto->getPoblacion(); ?> (<?php echo $objeto->getCodigopostal(); ?>)</span>
+                        <div class="infb">
+                            <span class="sec">Dirección: </span><?php echo $objeto->getDireccion(); ?><br>
+                            <span class="sec">Población: </span><?php echo $objeto->getPoblacion(); ?> (<?php echo $objeto->getCodigopostal(); ?>)<br>
+                            <span class="sec">Provincia: </span><?php echo $objeto->getProvincia(); ?><br>
+                            <span class="sec">Publicado el: </span><?php echo $objeto->getFechapubli(); ?><br>
+                            <span class="sec">Tipo: </span><?php echo $objeto->getTipo(); ?><br>
+                        </div>
+                        <div class="infb">
+                            <span class="sec">Precio: </span><?php echo $objeto->getPrecio(); ?>€ (<?php echo $objeto->getTipooferta(); ?>)<br>
+                            <span class="sec">Tipo: </span><?php echo $objeto->getDescripcion(); ?><br>
+                            <span class="sec">Nº habitaciones: </span><?php echo $objeto->getHabitaciones() ?><br>
+                            <span class="sec">Nº baños: </span><?php echo $objeto->getBanos(); ?><br>
+                        </div>
+                        <span class="sec">
+
+
+                        </span>
+                        <div class="clear"></div>
                     </div>
-                    <span class="sec">
-                        
-                        
-                    </span>
-                    <div class="clear"></div>
                 </div>
-                
-            </div>
             <?php
                 }
             ?>
+            </div>
         </section>
         <footer>
             
