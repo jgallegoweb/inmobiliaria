@@ -32,6 +32,9 @@ class BaseDatos {
         }
         return false;
     }
+    function getError(){
+        $this->sentencia->errorInfo();
+    }
     function getNumeroFilas(){
         if($this->sentencia!=null){
             return $this->sentencia->rowCount();

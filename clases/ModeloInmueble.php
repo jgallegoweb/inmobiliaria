@@ -75,6 +75,39 @@ class ModeloInmueble {
         }
         return $this->bd->getNumeroFilas();
     }
+    function deleteFoto($foto){
+        $param['foto']=$foto;
+        unlink($foto);
+        $sql = "DELETE from $this->tablafotos WHERE foto = :foto";
+        
+        $r=$this->bd->setConsulta($sql, $param);
+        if(!$r){
+            return -1;
+        }
+        return $this->bd->getNumeroFilas();
+    }
+    function edit(Inmueble $objeto){
+        $sql = "UPDATE $this->tabla SET direccion=:direccion, poblacion=:poblacion, codigopostal=:codigopostal,"
+                . "provincia=:provincia, tipo=:tipo, precio=:precio, tipooferta=:tipooferta,"
+                . "descripcion=:descripcion, habitaciones=:habitaciones, banos=:banos WHERE id=:id";
+        $param['direccion']=$objeto->getDireccion();
+        $param['poblacion']=$objeto->getPoblacion();
+        $param['codigopostal']=$objeto->getCodigopostal();
+        $param['provincia']=$objeto->getProvincia();
+        $param['tipo']=$objeto->getTipo();
+        $param['precio']=$objeto->getPrecio();
+        $param['tipooferta']=$objeto->getTipooferta();
+        $param['descripcion']=$objeto->getDescripcion();
+        $param['habitaciones']=$objeto->getHabitaciones();
+        $param['banos']=$objeto->getBanos();
+        $param['id']=$objeto->getId();
+        
+        $r=$this->bd->setConsulta($sql, $param);
+        if(!$r){
+            return -1;
+        }
+        return $this->bd->getNumeroFilas();
+    }
     function get($id){
         $sql = "SELECT * FROM $this->tabla where id=:id";
         $param['id']=$id;
@@ -82,6 +115,7 @@ class ModeloInmueble {
         if($r){
             $objeto = new Inmueble();
             $objeto->set($this->bd->getFila());
+            $objeto->setFotos($this->getListFotos($objeto->getId()));
             return $objeto;
         }
         return null;

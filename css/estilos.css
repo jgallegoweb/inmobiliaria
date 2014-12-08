@@ -63,8 +63,13 @@ label{
     -moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
     box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
     margin-top: 25px;
+    overflow: hidden;
+    transition: all 1s ease;
+    background-color: white;
 }
-
+.anuncio a{
+    color: black;
+}
 .sec{
     font-weight: bold;
 }
@@ -75,17 +80,23 @@ label{
 .titulocasa{
     font-size: 20px;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .info{
     position:absolute;
-    bottom: 0px;
-    
+    top: 230px;
+    bottom: -300px;
     padding: 10px;
     width: 380px;
     background-color: rgba(255,255,255,0.7);
     z-index: 100;
+    transition: bottom 1s ease;
+    
+}
+.anuncio:hover .info{
+    top: auto;
+    bottom:0px;
 }
 .foto{
     width: 400px;
@@ -105,6 +116,7 @@ label{
 }
 .anuncio:hover .sobrefoto{
     visibility: visible;
+    
 }
 #tablon{
     width: 825px; margin: 0 auto; background-color: #000;
@@ -115,3 +127,41 @@ label{
 .foto img{ 
     width: 400px;
 }
+#informacionpiso{
+    width: 825px;
+    margin: 0 auto;
+    columns: 2;
+    font-size: 20px;
+}
+.infopisob{
+    width: 45%;
+    float: left;
+    margin: 15px 0;
+    margin-right: 5%;
+}
+#galeria{
+    width: 825px;
+    margin: 20px auto;
+}
+.miniatura{
+    width: 200px;
+    height: 100px;
+    float: left;
+    overflow: hidden;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+.miniatura img{
+    width: 200px;
+}
+footer{
+    height: 200px;
+    margin-top: 25px;
+}
+#error{
+    background-color: #ffff66;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 20px;
+}
+
