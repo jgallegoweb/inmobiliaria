@@ -68,10 +68,10 @@ class ModeloInmueble {
         }
         return null;
     }
-    function getList($condicion="1=1", $parametro=array(), $orderby = "1"){
+    function getList($condicion="1=1", $param=array(), $orderby = "1"){
         $list = array();
         $sql = "select * from $this->tabla where $condicion order by $orderby";
-        $r = $this->bd->setConsulta($sql, $parametro);
+        $r = $this->bd->setConsulta($sql, $param);
         if($r){
             while($fila = $this->bd->getFila()){
                 $objeto = new Inmueble();
@@ -82,6 +82,34 @@ class ModeloInmueble {
             return null;
         }
         return $list;
+    }
+    function getListFotos($idcasa){
+        $list = array();
+        $sql = "select * from $this->tablafotos where idcasa=:idcasa";
+        $param['idcasa']=$idcasa;
+        $r = $this->bd->setConsulta($sql, $param);
+        if($r){
+            while($fila = $this->bd->getFila()){
+                $list[] = $fila['foto'];
+            }
+        }else{
+            return null;
+        }
+        return $list;
+    }
+    function getOption($buscado){
+        $options="";
+        $sql = "SELECT DISTINCT poblacion FROM $this->tabla order by 1";
+        $param['buscado']=$buscado;
+        $r=$this->bd->setConsulta($sql, $param);
+        if($r){
+            while($fila = $this->bd->getFila()){
+                $options .= "<option>".$fila[0]."</option>";
+            }
+        }else{
+            return null;
+        }
+        return $options;
     }
 }
 

@@ -39,7 +39,6 @@ class Inmueble {
         $this->descripcion = $datos[9+$inicio];
         $this->habitaciones = $datos[10+$inicio];
         $this->banos = $datos[11+$inicio];
-        $this->fotos = $datos[12+$inicio];
     }
     
     function setId($id) {

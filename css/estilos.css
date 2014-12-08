@@ -1,0 +1,97 @@
+/* 
+    Created on : 07-dic-2014, 13:22:26
+    Author     : Javier
+*/
+body{
+    font-family: 'Ubuntu', sans-serif;
+    background: #c0d6fb;
+}
+header img{
+    display: block;
+    margin: 0 auto;
+    width: 350px;
+}
+header{
+    width: 100%;
+    background-color: #f3f3f3;
+}
+#buscador{
+    background-color: #343434;
+    color: white;
+    height: 140px;
+}
+#buscador form input,select{
+    padding: 5px 20px;
+    font-size: 20px;
+    border-radius: 4px;
+}
+#buscador form input[type="submit"]{
+    background-color: #343434;
+    border: 3px solid white;
+    color: white;
+    width: 300px;
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+}
+#buscador form input{
+    width: 100px;
+}
+#buscador form{
+    width: 800px;
+    margin: 0 auto;
+    font-size: 30px;
+    line-height: 80px;
+}
+label{
+    display: block;
+    float: left;
+    padding: 0 10px;
+    font-family: 'Ubuntu', sans-serif;
+}
+#buscar{
+    margin: 0 auto;
+}
+.clear{
+    clear: both;
+}
+.anuncio{
+    position: relative;
+    width: 800px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: #141414;
+    margin-top: 20px;
+    border-radius: 10px 10px 0px 0px;
+    overflow: hidden;
+    background-size: 800px;
+    overflow: hidden;
+    background-position-y: -100px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+}
+.anuncion img{
+    z-index: -1;
+}
+.foto{
+    width: 100%;
+}
+.info{
+    padding: 10px;
+    color: white;
+    background-color: rgba(25,25,25, 0.7);
+    position:absolute;
+    bottom: 0px;
+    width: 100%;
+}
+.sec{
+    font-weight: bold;
+}
+.info .infb{
+    width: 40%;
+    float: left;
+}
+.titulocasa{
+    font-size: 20px;
+}
