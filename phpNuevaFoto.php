@@ -20,7 +20,10 @@ $subir->setDestino("imagenes");
 $subir->subir();
 $fotos = $subir->getNombres();
 
-print_r($fotos);
+if($fotos==null){
+    header("Location: viewEditar.php?id=$id&e=2");
+    exit();
+}
 $bd = new BaseDatos();
 $modelo = new ModeloInmueble($bd);
 $objeto = new Inmueble($id);
@@ -28,4 +31,9 @@ $objeto->setFotos($fotos);
 print_r($objeto->getFotos());
 $r = $modelo->addFoto($objeto);
 
-echo $r;
+if($r==-1){
+    header("Location: viewEditar.php?id=$id&e=1");
+    exit();
+}
+header("Location: viewEditar.php?id=$id&e=0");
+exit();

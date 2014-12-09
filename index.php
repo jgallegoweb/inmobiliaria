@@ -104,7 +104,7 @@ $filas = $modelo->getList($condicion, $param);
                             </div>
                             <div class="infb">
                                 <span class="sec">Precio: </span><?php echo $objeto->getPrecio(); ?>€ (<?php echo $objeto->getTipooferta(); ?>)<br>
-                                <span class="sec">Tipo: </span><?php echo $objeto->getDescripcion(); ?><br>
+                                <span class="sec">Descripción: </span><?php echo $objeto->getDescripcion(); ?><br>
                                 <span class="sec">Nº habitaciones: </span><?php echo $objeto->getHabitaciones() ?><br>
                                 <span class="sec">Nº baños: </span><?php echo $objeto->getBanos(); ?><br>
                             </div>

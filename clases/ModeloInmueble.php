@@ -42,11 +42,17 @@ class ModeloInmueble {
     function addFoto(Inmueble $objeto){
         $sql = "INSERT INTO $this->tablafotos VALUES(null, :idcasa, :nombre)";
         $arrayfotos = $objeto->getFotos();
+        $error=0;
         foreach($arrayfotos as $key => $foto){
             $param['idcasa']=$objeto->getId();
             $param['nombre']=$foto;
-            $this->bd->setConsulta($sql, $param);
+            $r=$this->bd->setConsulta($sql, $param);
+            if(!$r){
+                $error=-1;
+            }
         }
+        //devuelve -1 si alguna inserción falló
+        return $error;
     }
     function delete(Inmueble $objeto){
         if($this->deleteFotos($objeto->getId())==-1){

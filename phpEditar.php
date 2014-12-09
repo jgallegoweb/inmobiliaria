@@ -19,12 +19,9 @@ $modelo = new ModeloInmueble($bd);
 $objeto = new Inmueble($id, $direccion, $poblacion, $codigopostal, $provincia, 
         null, $tipo, $precio, $tipooferta, $descripcion, $habitaciones, $banos);
 $r = $modelo->edit($objeto);
-print_r($r);
 if($r ==-1){
-    //header("Location: viewGestion.php?e=0");
-    echo "inhode";
+    header("Location: viewEditar.php?id=$id&e=1");
     exit();
 }
-//header("Location: viewGestion.php?e=1");
-echo "sdaf";
+header("Location: viewEditar.php?id=$id&e=0");
 exit();

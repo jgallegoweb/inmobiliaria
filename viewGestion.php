@@ -1,8 +1,26 @@
 <?php
     require 'require/comun.php';
     $bd = new BaseDatos();
-    $modelo = new ModeloInmueble($bd);
-    $filas = $modelo->getList();
+    $modelo = new ModeloInmueble($bd);;
+    
+    $tipooferta="%";
+    $tipo="%";
+    $poblacion="%";
+    if(Leer::get("tipooferta")!=null){
+        $tipooferta= Leer::get("tipooferta");
+    }
+    if(Leer::get("tipo")!=null){
+        $tipo= Leer::get("tipo");
+    }
+    if(Leer::get("poblacion")!=null){
+        $poblacion= Leer::get("poblacion");
+    }
+    $condicion="tipooferta LIKE :tipooferta and tipo LIKE :tipo and poblacion LIKE :poblacion";
+    $param['tipooferta']=$tipooferta;
+    $param['tipo']=$tipo;
+    $param['poblacion']=$poblacion;
+
+    $filas = $modelo->getList($condicion, $param);
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,6 +39,38 @@
         <section id="central">
             <section class="tablacasas">
                 <div class="minicab">Inmuebles actuales</div>
+                <form class="formser" action="viewGestion.php">
+                    <label>Busco 
+                        <select name="tipo">
+                            <option></option>
+                            <option value="piso">Piso</option>
+                            <option value="casa">Casa</option>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="estudio">Estudio</option>
+                            <option value="chalet">Chalet</option>
+                            <option value="garaje">Garaje</option>
+                            <option value="local">Local</option>
+                            <option value="oficina">Oficina</option>
+                        </select>
+                    </label>
+                    <label>para 
+                        <select name="tipooferta">
+                            <option></option>
+                            <option value="venta">Comprar</option>
+                            <option value="alquiler">Alquilar</option>
+                        </select>
+                    </label>
+                    <label>en 
+                        <select name="poblacion">
+                            <option></option>
+                            <?php
+                            echo $modelo->getOption("poblacion");
+                            ?>
+                        </select>
+                    </label><br/>
+                    <input class="filtrogest" type="submit" value="Filtrar Búsqueda" />
+                    <div class="clear"></div>
+                </form>
                 <table>
                     <tr>
                         <th>ID</th>
@@ -51,7 +101,6 @@
                         }
                     ?>
                 </table>
-
             </section>
             <section class="gestform">
                 <div class="minicab">Nuevo inmueble</div>

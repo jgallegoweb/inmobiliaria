@@ -4,6 +4,7 @@
 */
 body{
     font-family: 'Ubuntu', sans-serif;
+    background-color: #ddddff;
 }
 header img{
     display: block;
@@ -43,7 +44,12 @@ input[type="submit"],input[type="reset"] {
     width: 50%;
     float: left;
 }
-
+.filtrogest{
+    padding: 10px 0px;
+}
+.formser{
+    margin-left: 80px;
+}
 .tablacasas{
     width: 750px;
     float: left;
@@ -69,11 +75,12 @@ table tr:nth-child(n+2):hover{
     background-color: #ff9999;
 }
 .minifotoborrar{
-    width: 150px;
-    float: left;
+    width: 220px;
+    margin: 5px auto;
 }
 .minifotoborrar img{
-    width: 150px;
+    width: 220px;
+    
 }
 .clear{
     clear: both;

@@ -10,9 +10,14 @@ window.addEventListener("load", function(){
         }
     }
     function confirmaBorrado(e){
-        alert("dd");
         var direccion = this.getAttribute("data-nombre");
-        if(!confirm("se borrará el inmueble "+direccion+" y sus fotos, ¿Está seguro?")){
+        var mensaje = "";
+        if(direccion == null){
+            mensaje = "Se va a borrar la foto seleccionada, ¿Está seguro?";
+        }else{
+            mensaje = "se borrará el inmueble "+direccion+" y sus fotos, ¿Está seguro?";
+        }
+        if(!confirm(mensaje)){
             e.preventDefault();
         }
     }

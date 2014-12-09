@@ -19,9 +19,12 @@
     <head>
         <meta charset="UTF-8">
         <title>Homeless - Ver piso</title>
+        <script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/lightbox.min.js"></script>
+        <link href="css/lightbox.css" rel="stylesheet" />
         <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="css/estilos.css" media="screen" />
-        <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'> 
     </head>
     <body>
         <header>
@@ -88,7 +91,7 @@
                     foreach($objeto->getFotos() as $valor){
                 ?>
                 <div class="miniatura">
-                    <img src="<?php echo $valor ?>">
+                    <a href="<?php echo $valor ?>" data-lightbox="imagen1" data-title="<?php echo $objeto->getDireccion(); ?>"><img src="<?php echo $valor ?>"></a>
                 </div>
                 <?php 
                     }

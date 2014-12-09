@@ -48,7 +48,7 @@
                     <label>Precio: <input type="number" name="precio" value="<?php echo $objeto->getPrecio(); ?>" placeholder="1000" maxlength="10"/></label>(cambiar comas js)
                     <label>Tipo oferta:
                         <select name="tipooferta">
-                            <option><?php echo $objeto->getProvincia(); ?></option>
+                            <option><?php echo $objeto->getTipooferta(); ?></option>
                             <option>Alquiler</option>
                             <option>Venta</option>
                         </select>
@@ -58,19 +58,6 @@
                     </label>
                     <label>Habitaciones: <input type="number" name="habitaciones" value="<?php echo $objeto->getHabitaciones(); ?>" placeholder="2" maxlength="3"/></label>
                     <label>Baños: <input type="number" name="banos" value="<?php echo $objeto->getBanos(); ?>" placeholder="1" maxlength="3"/></label>
-                    <label>Subir más imagenes: <input type="file" name="fotos[]" multiple /></label>
-                    <?php 
-                    $fotos=$objeto->getFotos();
-                    foreach($fotos as $foto){
-                    ?>
-                    <a href="phpBorrarFoto.php?foto=<?php echo $foto; ?>&id=<?php echo $id ?>">
-                        <div class="minifotoborrar">
-                            <img src="<?php echo $foto; ?>">
-                        </div>
-                    </a>
-                    <?php
-                        }
-                    ?>
                     <div class="clear"></div>
                     <input type="submit" value="Guardar edición" />
                     <input type="reset" id="limp" value="Descartar cambios" />
@@ -82,23 +69,27 @@
                 <form action="phpNuevaFoto.php" method="POST" enctype="multipart/form-data" autocomplete="no">
                     <input type="hidden" name="id" value="<?php echo $objeto->getId(); ?>">
                     <label>Subir más imagenes: <input type="file" name="fotos[]" multiple /></label>
-                    <?php 
-                    $fotos=$objeto->getFotos();
-                    foreach($fotos as $foto){
-                    ?>
-                    <a href="phpBorrarFoto.php?foto=<?php echo $foto; ?>&id=<?php echo $id ?>">
-                        <div class="minifotoborrar">
-                            <img src="<?php echo $foto; ?>">
-                        </div>
-                    </a>
-                    <?php
-                        }
-                    ?>
+                    
                     <div class="clear"></div>
                     <input type="submit" value="Guardar edición" />
                     <input type="reset" id="limp" value="Descartar cambios" />
                 </form>
                 
+            </section>
+            <section class="gestform">
+                <div class="minicab">Editar Fotos</div>
+                <?php
+                $fotos = $objeto->getFotos();
+                foreach ($fotos as $foto) {
+                ?>
+                <a href="phpBorrarFoto.php?foto=<?php echo $foto; ?>&id=<?php echo $id ?>" class="eliminar">
+                    <div class="minifotoborrar">
+                        <img src="<?php echo $foto; ?>">
+                    </div>
+                </a>
+                <?php
+                }
+                ?>
             </section>
     </body>
 </html>
