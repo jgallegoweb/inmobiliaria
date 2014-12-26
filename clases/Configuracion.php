@@ -17,4 +17,5 @@ class Configuracion {
     const BASE = "inmobiliaria"; 
     const USER = "root";
     const CLAVE = "";
+    const PEZ = "PESCAITO DE MOTRIL";
 }

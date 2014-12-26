@@ -2,6 +2,7 @@
 require 'require/comun.php';
 $bd = new BaseDatos();
 $modelo = new ModeloInmueble($bd);
+$sesion = new Sesion();
 $error=Leer::get("e");
 $tipooferta="%";
 $tipo="%";
@@ -33,7 +34,25 @@ $filas = $modelo->getList($condicion, $param);
     </head>
     <body>
         <header>
+            <?php
+                if(!$sesion->isAutentificado()){
+            ?>
+            <form action="usuarios/phpLogin.php" method="POST">
+                <label>Usuario / Correo<br/><input type="text" name="login" value="" /></label>
+                <label>Contraseña<br/><input type="password" name="clave" value="" /></label>
+                <input type="submit" value="Iniciar sesión" />
+            </form>
+            <br/>
+            <a href="usuarios/verRecuperar.php">Olvidé mi clave</a> / <a href="usuarios/verLogin.php">Registrarme</a>
+            <?php
+                }else{
+            ?>
+            <a href="usuarios/phpSalir.php">Cerrar Sesión</a>
+            <?php
+                }
+            ?>
             <img src="img/logo.png">
+            
         </header>
         <section id="buscador">
             <form action="index.php">
