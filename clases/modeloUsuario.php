@@ -51,17 +51,16 @@ class modeloUsuario {
         }
         return $this->bd->getNumeroFilas();
     }*/
-    function edit(Usuario $objetoNuevo, $loginpk){
-        $sql="UPDATE $this->tabla SET login=:login, clave=:clave, nombre=:nombre, apellidos=:apellidos, email=:email, isactivo=:isactivo, isroot=:isroot, rol=:rol where login=:loginpk";
+    function edit(Usuario $objetoNuevo){
+        $sql="UPDATE $this->tabla SET clave=:clave, nombre=:nombre, apellidos=:apellidos, email=:email, isactivo=:isactivo, isroot=:isroot, rol=:rol where login=:login";
         $param['login']=$objetoNuevo->getLogin();
-        $param['clave']=$objetoNuevo->getClave();
+        $param['clave']=Util::cifrarPass($objetoNuevo->getClave());
         $param['nombre']=$objetoNuevo->getNombre();
         $param['apellidos']=$objetoNuevo->getApellido();
         $param['email']=$objetoNuevo->getEmail();
         $param['isactivo']=$objetoNuevo->getIsactivo();
         $param['isroot']=$objetoNuevo->getIsroot();
         $param['rol']=$objetoNuevo->getFechalogin();
-        $param['loginpk']=$loginpk;
         $r=$this->bd->setConsulta($sql, $param);
         if(!$r){
             return -1;

@@ -21,7 +21,7 @@ class ModeloInmueble {
     function add(Inmueble $objeto){
         $sql = "INSERT INTO $this->tabla VALUES(null, :direccion, :poblacion, "
                 . ":codigopostal, :provincia, curdate(), :tipo, :precio,"
-                . " :tipooferta, :descripcion, :habitaciones, :banos)";
+                . " :tipooferta, :descripcion, :habitaciones, :banos, :vendedor)";
         $param['direccion']=$objeto->getDireccion();
         $param['poblacion']=$objeto->getPoblacion();
         $param['codigopostal']=$objeto->getCodigopostal();
@@ -32,7 +32,7 @@ class ModeloInmueble {
         $param['descripcion']=$objeto->getDescripcion();
         $param['habitaciones']=$objeto->getHabitaciones();
         $param['banos']=$objeto->getBanos();
-        
+        $param['vendedor']=$objeto->getVendedor();
         $r = $this->bd->setConsulta($sql, $param);
         if(!$r){
             return -1;

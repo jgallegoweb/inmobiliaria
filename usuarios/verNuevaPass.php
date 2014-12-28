@@ -2,6 +2,7 @@
 require '../require/comun.php';
 $bd = new BaseDatos();
 $mensaje =  Leer::get("mensaje");
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,11 +33,12 @@ $mensaje =  Leer::get("mensaje");
             <div class="centrador">
                 <div class="iden">
                     <form action="phpNuevaPass.php" method="POST">
-                        <label>Nueva pass<br/><input type="text" name="recuerdo" value="" /></label>
-                        <label>Confirma pass<br/><input type="text" name="recuerdo" value="" /></label>
+                        <input type="hidden" name="cod" value="<?php echo Leer::get("cod"); ?>">
+                        <input type="hidden" name="login" value="<?php echo Leer::get("login"); ?>">
+                        <label>Nueva pass<br/><input type="text" name="clave" value="" /></label>
+                        <label>Confirma pass<br/><input type="text" name="clave2" value="" /></label>
                         <input type="submit" value="Guardar pass" />
                     </form>
-                    
                 </div>
                 
             </div>

@@ -5,9 +5,9 @@
  * @author Javier
  */
 class Inmueble {
-    private $id, $direccion, $poblacion, $codigopostal, $provincia, $fechapubli, $tipo, $precio, $tipooferta, $descripcion, $habitaciones, $banos, $fotos;
+    private $id, $direccion, $poblacion, $codigopostal, $provincia, $fechapubli, $tipo, $precio, $tipooferta, $descripcion, $habitaciones, $banos, $fotos, $vendedor;
     function __construct($id=null, $direccion=null, $poblacion=null, $codigopostal=null, 
-            $provincia=null, $fechapubli=null, $tipo='Piso', $precio=null, $tipooferta='alquiler', $descripcion="", $habitaciones=0, $banos=0, $fotos=null) {
+            $provincia=null, $fechapubli=null, $tipo='Piso', $precio=null, $tipooferta='alquiler', $descripcion="", $habitaciones=0, $banos=0, $fotos=null, $vendedor=0) {
         $this->id = $id;
         $this->direccion = $direccion;
         $this->poblacion = $poblacion;
@@ -21,11 +21,9 @@ class Inmueble {
         $this->habitaciones = $habitaciones;
         $this->banos = $banos;
         $this->fotos = $fotos;
+        $this->vendedor = $vendedor;
     }
     
-    /*
-     * Falta por implementar el método set
-     */
     function set($datos, $inicio=0){
         $this->id = $datos[0+$inicio];
         $this->direccion = $datos[1+$inicio];
@@ -39,10 +37,14 @@ class Inmueble {
         $this->descripcion = $datos[9+$inicio];
         $this->habitaciones = $datos[10+$inicio];
         $this->banos = $datos[11+$inicio];
+        $this->vendedor = $datos[12+$inicio];
     }
     
     function setId($id) {
         $this->id = $id;
+    }
+    function setVendedor($vendedor) {
+        $this->vendedor = $vendedor;
     }
 
     function setDireccion($direccion) {
@@ -95,6 +97,9 @@ class Inmueble {
 
     function getId() {
         return $this->id;
+    }
+    function getVendedor() {
+        return $this->vendedor;
     }
 
     function getDireccion() {
@@ -161,4 +166,5 @@ create table inmueble(
   descripcion varchar(255) not null,
   habitaciones tinyint(3) not null,
   banos tinyint(3) not null
+  vendedor varchar(20) default admin not null
 ) engine=innodb charset=utf8 collate=utf8_unicode_ci;*/
