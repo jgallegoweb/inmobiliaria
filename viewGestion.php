@@ -1,7 +1,13 @@
 <?php
-    require 'require/comun.php';
-    $bd = new BaseDatos();
-    $modelo = new ModeloInmueble($bd);;
+require 'require/comun.php';
+$bd = new BaseDatos();
+$modeloUser = new modeloUsuario($bd);
+$sesion = new Sesion();
+$error=Leer::get("e");
+$sesion->noAutentificado("usuarios/verLogin.php");
+$objetoUser = $sesion->getUsuario();
+
+$modelo = new ModeloInmueble($bd);;
     
     $tipooferta="%";
     $tipo="%";
@@ -16,10 +22,17 @@
         $poblacion= Leer::get("poblacion");
     }
     $condicion="tipooferta LIKE :tipooferta and tipo LIKE :tipo and poblacion LIKE :poblacion";
+    
     $param['tipooferta']=$tipooferta;
     $param['tipo']=$tipo;
     $param['poblacion']=$poblacion;
-
+    
+    
+    if($objetoUser->getRol()!="administrador"){
+        $condicion .= " and vendedor=:vendedor";
+        $param['vendedor']=$objetoUser->getLogin();
+    }
+    
     $filas = $modelo->getList($condicion, $param);
 ?>
 <!DOCTYPE html>
@@ -31,6 +44,13 @@
         <link rel="stylesheet" type="text/css" href="css/estilosback.css" media="screen" />
         <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
         <script src="js/codigo.js"></script>
+        <style>
+            .thumb {
+              height: 75px;
+              border: 1px solid #000;
+              margin: 10px 5px 0 0;
+            }
+          </style>
     </head>
     <body>
         <header>
@@ -105,6 +125,7 @@
             <section class="gestform">
                 <div class="minicab">Nuevo inmueble</div>
                 <form action="phpInsertar.php" method="POST" enctype="multipart/form-data" autocomplete="no">
+                    <input type="hidden" name="vendedor" value="<?php echo $objetoUser->getLogin(); ?>">
                     <label>Dirección: <input type="text" name="direccion" value="" placeholder="C/Piruleta nº10, Bloque 4, 3ºA" maxlength="80"/></label>
                     <label>Población: <input type="text" name="poblacion" value="" placeholder="Motril" maxlength="60"/></label>
                     <label>C.P.: <input type="number" name="codigopostal" value="" placeholder="18600" maxlength="5"/></label>
@@ -133,11 +154,44 @@
                     </label>
                     <label>Habitaciones: <input type="number" name="habitaciones" value="" placeholder="2" maxlength="3"/></label>
                     <label>Baños: <input type="number" name="banos" value="" placeholder="1" maxlength="3"/></label>
-                    <label>Imagenes: <input type="file" name="fotos[]" multiple /></label>
+                    <label>Imagenes: <input type="file" id="files" name="fotos[]" multiple /></label>
+                    <output id="list"></output>
                     <input type="submit" value="Añadir" />
                     <input type="reset" id="limp" value="Limpiar" />
                 </form>
             </section>
         </section>
     </body>
+    <script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+    document.getElementById('list').innerHTML = "";
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list').insertBefore(span, null);
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    </script>
 </html>

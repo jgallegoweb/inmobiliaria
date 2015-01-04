@@ -85,7 +85,10 @@ class Sesion {
     }
     
     function isAutentificado(){
-        return $_SESSION['autentificado'];
+        if(isset($_SESSION['autentificado'])){
+            return $_SESSION['autentificado'];
+        }
+        return false;
     }
     
     function setAutentificado($bool){

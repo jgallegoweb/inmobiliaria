@@ -5,7 +5,7 @@ $modelo = new modeloUsuario($bd);
 $sesion = new Sesion();
 $error=Leer::get("e");
 $sesion->noAutentificado("verLogin.php");
-$objeto = $modelo->get($sesion->getUsuario());
+$objeto = $sesion->getUsuario();
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,6 +14,7 @@ $objeto = $modelo->get($sesion->getUsuario());
         <title>Inmobiliaria</title>
         <link rel="stylesheet" type="text/css" href="../css/reset.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="../css/estilos.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="../css/estilosback.css" media="screen" />
         <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
     </head>
     <body>
@@ -33,9 +34,13 @@ $objeto = $modelo->get($sesion->getUsuario());
         <?php 
         }
         ?>
-        <section>
-            
-            <div class="clear"></div>
+        <section id="central">
+            <section>
+                <a href="../index.php">Inicio</a>
+                <a href="../viewGestion.php">Gestión de mis anuncios</a>
+                <a href="verEditar.php">Ver perfil</a>
+                <a href="phpSalir.php">Cerrar sesión</a>
+            </section>
         </section>
         <footer>aa</footer>
     </body>

@@ -141,6 +141,22 @@ class ModeloInmueble {
         }
         return $list;
     }
+    function getListPaginado($pagina=0, $rpp=10, $condicion="1=1", $parametro=array(), $orderby = "1"){
+        $list = array();
+        $principio = $pagina*$rpp;
+        $sql = "select * from $this->tabla where $condicion order by $orderby limit $principio,$rpp";
+        $r = $this->bd->setConsulta($sql, $parametro);
+        if($r){
+            while($fila = $this->bd->getFila()){
+                $inmueble = new Inmueble();
+                $inmueble->set($fila);
+                $list[] = $inmueble;
+            }
+        }else{
+            return null;
+        }
+        return $list;
+    }
     function getListFotos($idcasa){
         $list = array();
         $sql = "select * from $this->tablafotos where idcasa=:idcasa";
@@ -169,6 +185,20 @@ class ModeloInmueble {
         }
         return $options;
     }
+    function getNumPaginas($condicion="1=1", $parametros = Array(), $rpp=Configuracion::RPP){
+        $list = $this->count($condicion, $parametros);
+        return (ceil($list[0]/$rpp));
+    }
+    function count($condicion = "1=1", $parametros = array()) {
+        $sql = "select count(*) from $this->tabla where $condicion";
+        $r = $this->bd->setConsulta($sql, $parametros);
+        if ($r) {
+            //return $this->bd->getFila()[0];
+            return $this->bd->getFila();
+        }
+        return -1;
+    }
+
 }
 
 

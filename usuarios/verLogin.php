@@ -13,6 +13,7 @@ $error=  Leer::get("error");
         <link rel="stylesheet" type="text/css" href="../css/reset.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="../css/estilos.css" media="screen" />
         <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+        <script src="../js/ajax.js"></script>
     </head>
     <body>
         <header>
@@ -54,14 +55,15 @@ $error=  Leer::get("error");
                     
                 </div>
                 <div class="iden">
-                    <form action="phpAlta.php" method="POST" enctype="multipart/form-data">
-                        <label>Usuario<br/><input type="text" name="login" value="" /></label>
+                    <form action="phpEditarUser.php" method="POST" enctype="multipart/form-data">
+                        <label>Usuario<br/><input type="text" name="login" id="login" value="" /><span></span></label>
                         <label>Contraseña<br/><input type="password" name="clave" value="" /></label>
                         <label>Confirma contraseña<br/><input type="password" name="clave" value="" /></label>
                         <label>Nombre<br/><input type="text" name="nombre" value="" /></label>
                         <label>Apellidos<br/><input type="text" name="apellido" value="" /></label>
                         <label>Email<br/><input type="email" name="email" value="" /></label>
-                        <input type="submit" value="Iniciar sesión" />
+                        <div class="clear"></div>
+                        <input type="submit" value="Guardar cambios" />
                     </form>
                     
                 </div>
@@ -69,4 +71,22 @@ $error=  Leer::get("error");
         </section>
         <footer>aa</footer>
     </body>
+    <script>
+            var login = document.getElementById("login");
+            login.addEventListener("blur", function(){
+                var log = login.value;
+                var ajax = new Ajax();
+                ajax.setUrl("ajaxLogin.php?login="+log);
+                ajax.setRespuesta(verrespuesta);
+                ajax.doPeticion();
+            });
+            var verrespuesta = function(textojson){
+                var json =  JSON.parse(textojson);
+                if(json.si == false){
+                    login.nextElementSibling.textContent = "Este usuario ya existe"; 
+                }else{
+                    login.nextElementSibling.textContent = "Disponible"; 
+                }
+            }
+    </script>
 </html>

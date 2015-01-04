@@ -12,6 +12,7 @@ $tipooferta = Leer::post("tipooferta");
 $descripcion = Leer::post("descripcion");
 $habitaciones = Leer::post("habitaciones");
 $banos = Leer::post("banos");
+$vendedor = Leer::post("vendedor");
 
 $subir = new SubirMultiple("fotos");
 
@@ -32,14 +33,14 @@ $fotos = $subir->getNombres();
 $bd = new BaseDatos();
 $modelo = new ModeloInmueble($bd);
 $objeto = new Inmueble(null, $direccion, $poblacion, $codigopostal, $provincia, 
-        null, $tipo, $precio, $tipooferta, $descripcion, $habitaciones, $banos, $fotos);
+        null, $tipo, $precio, $tipooferta, $descripcion, $habitaciones, $banos, $fotos, $vendedor);
 $r = $modelo->add($objeto);
 $objeto->setId($r);
 $rf = $modelo->addFoto($objeto);
 
 if($r ==-1 || $rf == -1){
-    header("Location: viewGestion.php?e=0");
+    header("Location: viewGestion.php?error=1");
     exit();
 }
-header("Location: viewGestion.php?e=1");
+header("Location: viewGestion.php?error=0");
 exit();

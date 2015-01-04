@@ -13,28 +13,44 @@ class Util {
         }else{
             $html .= "<a href='#' class=''>&lt;</a> ";
         }
-        
-
+        $x = array();
         if($p==0){
-            $x = Array($p, $p+1, $p+2, $p+3, $p+4);
+            for($i=0; $i<$paginas && $i<$p+5; $i++){
+                $x[] = $i;
+            }
         }else if($p==1){
-            $x = Array($p-1, $p, $p+1, $p+2, $p+3);
+            for($i=0; $i<$paginas && $i<$p+4; $i++){
+                $x[] = $i;
+            }
+        }else if($p>1&&$p<$paginas-2){
+            $x[]=$p-2;
+            $x[]=$p-1;
+            for($i=$p; $i<$paginas && $i<=$p+2; $i++){
+                $x[] = $i;
+            }
         }else if($p==$paginas-2){
-            $x = Array($p-3, $p-2, $p-1, $p, $p+1);
+            for($i=$p-3; $i<$paginas && $i<=$p+1; $i++){
+                if($i>=0){
+                    $x[] = $i;
+                }
+            }
         }else if($p==$paginas-1){
-            $x = Array($p-4, $p-3, $p-2, $p-1, $p);
-        }else if($p<$paginas-2){
-            $x = Array($p-2, $p-1, $p, $p+1, $p+2);
+            for($i=$p-4; $i<$paginas && $i<=$p; $i++){
+                if($i>=0){
+                    $x[] = $i;
+                }
+            }
         }
 
-
-        $html .= "<a href='$enlace=".($x[0])."'>".($x[0]+1)."</a> ";
-        $html .= "<a href='$enlace=".($x[1])."'>".($x[1]+1)."</a> ";
-        $html .= "<a href='$enlace=".($x[2])."'>".($x[2]+1)."</a> ";
-        $html .= "<a href='$enlace=".($x[3])."'>".($x[3]+1)."</a> ";
-        $html .= "<a href='$enlace=".($x[4])."'>".($x[4]+1)."</a> ";
-
-        $html .= "<a href='$enlace=".($p+1)."'>&gt;</a> ";
+        foreach($x as $valor){
+            $html .= "<a href='$enlace=".($valor)."'>".($valor+1)."</a> ";
+        }
+        if($p+1>$paginas-1){
+            $html .= "<a href='#'>&gt;</a> ";
+        }else{
+            $html .= "<a href='$enlace=".($p+1)."'>&gt;</a> ";
+        }
+        
         $html .= "<a href='$enlace=".($paginas-1)."'>&gt;&gt;</a> ";
         return $html;
     }

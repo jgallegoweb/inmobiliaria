@@ -12,6 +12,17 @@
         header("Location: viewGestion.php?e=11");
         exit();
     }
+    
+    $modeloUser = new modeloUsuario($bd);
+    $sesion = new Sesion();
+    $error=Leer::get("e");
+    $sesion->noAutentificado("usuarios/verLogin.php");
+    $objetoUser = $modeloUser->get($sesion->getUsuario());
+    
+    if($objeto->getVendedor()!=$objetoUser->getLogin() && $objetoUser->getRol()!="administrador"){
+        header("Location: viewGestion.php?error=12");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html>

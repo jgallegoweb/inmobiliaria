@@ -1,15 +1,8 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Validar
  *
- * @author Usuario
+ * @author 
  */
 class Validar {
     static function isCorreo($v){
@@ -22,21 +15,30 @@ class Validar {
         return filter_var($v, FILTER_VALIDATE_FLOAT);
     }
     static function isTelefono($v){
-        
+        return self::isCondicion($v,'/^[6-9][0-9]{8}$/');
+    }
+    static function isClave($v){
+        return self::isCondicion($v, '/[A-Za-z0-9]{6,10}$/');
     }
     static function isURL($v){
         return filter_var($v, FILTER_VALIDATE_URL);
     }
     static function isFecha($v){
-        //deberes para casa
+        return self::isCondicion($v,'/^(0[1-9]|1[0-9]|2[0-9]|3[01])(.|-)(0[1-9]|1[012])(.|-)(19[5-9]|20[012])[0-9]$/'); 
+    }
+    static function isDNI($v){
+        return self::isCondicion($v,'/^(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))$/');
     }
     static function isIP($v){
         return filter_var($v, FILTER_VALIDATE_IP);
     }
-    static function isCondicion($v){
-        return filter_var($v, FILTER_VALIDATE_IP);
+    static function isCP($v){
+        return self::isCondicion($v,'/^(((0[1-9]|5[0-2])|[1-4][0-9])|AD)[0-9]{3}$/');
     }
     static function isAltaUsuario($login, $clave, $claveconfirmada, $nombre, $apellidos, $email){
         return true;
+    }
+    static function isCondicion($v, $condicion){
+        return preg_match($condicion, $v);
     }
 }

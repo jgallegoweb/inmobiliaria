@@ -67,6 +67,22 @@ class modeloUsuario {
         }
         return $this->bd->getNumeroFilas();
     }
+    function editSinClave(Usuario $objetoNuevo){
+        $sql="UPDATE $this->tabla SET nombre=:nombre, apellidos=:apellidos, email=:email, isactivo=:isactivo, isroot=:isroot, rol=:rol where login=:login";
+        $param['login']=$objetoNuevo->getLogin();
+        $param['nombre']=$objetoNuevo->getNombre();
+        $param['apellidos']=$objetoNuevo->getApellido();
+        $param['email']=$objetoNuevo->getEmail();
+        $param['isactivo']=$objetoNuevo->getIsactivo();
+        $param['isroot']=$objetoNuevo->getIsroot();
+        $param['rol']=$objetoNuevo->getFechalogin();
+        $r=$this->bd->setConsulta($sql, $param);
+        if(!$r){
+            return -1;
+        }
+        return $this->bd->getNumeroFilas();
+    }
+    
     function get($login){
         $sql = "SELECT * FROM $this->tabla where login=:login";
         $param['login']=$login;
@@ -101,9 +117,23 @@ class modeloUsuario {
         }
         return $list;
     }
-    function selectHTML($id, $name, $condicion, $parametros, $orderby = "1", $valorSeleccionado="", $blanco=true, $texto=""){
-        //$select = "<select name='$name' id='$id'>";
-        //terminar
-        return false;
+    function setFechaLogin($login){
+        $sql = 'update usuario set fechalogin=now() where login=:login';
+        $param['login']=$login;
+        $r=$this->bd->setConsulta($sql, $param);
+        return $r;
+    }
+    function getListJSON($pagina=0, $rpp=3, $condicion="1=1", $parametro=array(), $orderby = "1"){
+        $principio = $pagina*$rpp;
+        $sql = "select * from $this->tabla where $condicion order by $orderby limit $principio,$rpp";
+        $this->bd->setConsulta($sql, $parametro);
+        $r = "[ ";
+        while($fila = $this->bd->getFila()){
+            $usuario = new Usuario();
+            $usuario->set($fila);
+            $r .= $usuario->getJSON() . ",";
+        }
+        $r = substr($r, 0, -1)."]";
+        return $r;
     }
 }

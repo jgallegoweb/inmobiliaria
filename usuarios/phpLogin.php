@@ -18,5 +18,6 @@ if(!Util::isPass($clave, $objeto->getClave())){
     exit();
 }
 $sesion->setAutentificado(true);
-$sesion->setUsuario($login);
+$modelo->setFechaLogin($login);
+$sesion->setUsuario($objeto);
 header("Location: ../index.php");

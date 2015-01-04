@@ -112,7 +112,16 @@ class Usuario {
     public function setFechalogin($fechalogin) {
         $this->fechalogin = $fechalogin;
     }
-
+    
+    public function getJSON(){
+        $prop = get_object_vars($this);
+        $resp = "{";
+        foreach ($prop as $key => $value){
+            $resp.='"'.$key.'":'.json_encode(htmlspecialchars_decode($value)).',';
+        }
+        $resp = substr($resp, 0, -1)."}";
+        return $resp;
+    }
 
 }
 

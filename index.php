@@ -21,7 +21,9 @@ $param['tipooferta']=$tipooferta;
 $param['tipo']=$tipo;
 $param['poblacion']=$poblacion;
 
-$filas = $modelo->getList($condicion, $param);
+$pagina = Leer::get("p");
+$paginas = $modelo->getNumPaginas($condicion, $param);
+$filas = $modelo->getListPaginado($pagina, Configuracion::RPP, $condicion, $param);
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,6 +49,7 @@ $filas = $modelo->getList($condicion, $param);
             <?php
                 }else{
             ?>
+            <a href="usuarios/verAreaCliente.php">Área de cliente</a><br/>
             <a href="usuarios/phpSalir.php">Cerrar Sesión</a>
             <?php
                 }
@@ -141,6 +144,11 @@ $filas = $modelo->getList($condicion, $param);
             </div>
             <div class="clear"></div>
         </section>
-        <footer>aa</footer>
+        <footer>
+            <?php
+                echo Util::getEnlacesPaginacion($pagina, $paginas, Entorno::getEnlaceCarpeta("index.php?p"))
+            ?>
+        
+        </footer>
     </body>
 </html>

@@ -18,4 +18,5 @@ class Configuracion {
     const USER = "root";
     const CLAVE = "";
     const PEZ = "PESCAITO DE MOTRIL";
+    const RPP = 6;
 }
