@@ -5,7 +5,7 @@ $sesion = new Sesion();
 $sesion->noAutentificado("../index.php");
 $bd = new BaseDatos();
 $modelo = new modeloUsuario($bd);
-$objeto = $modelo->get($sesion->getUsuario());
+$objeto = $sesion->getUsuario();
 
 $login = Leer::post("login");
 $clave = Leer::post("clave");
@@ -37,9 +37,8 @@ if($clave!=null && $clave!=""){
     $r = $modelo->editSinClave($objeto);
 }
 
-
-
 if($r!=-1){
+    $sesion->setUsuario($objeto);
     header("Location: verEditar.php?mensaje=0");
 }else{
     header("Location: verEditar.php?mensaje=1");

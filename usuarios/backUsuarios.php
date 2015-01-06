@@ -29,6 +29,13 @@ $objeto = $sesion->getUsuario();
         <header>
             <img src="../img/logo.png">
         </header>
+        <nav>
+            <ul>
+                <li><a href="../index.php">Inicio</a></li>
+                <li><a href="verAreaCliente.php">área cliente</a></li>
+                <li><a href="">Gestión pisos</a></li>
+            </ul>
+        </nav>
         <section class="tablacasas">
             <table id="listausuarios">
                 <tr>

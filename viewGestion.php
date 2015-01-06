@@ -50,12 +50,19 @@ $modelo = new ModeloInmueble($bd);;
               border: 1px solid #000;
               margin: 10px 5px 0 0;
             }
-          </style>
+        </style>
     </head>
     <body>
         <header>
             <img src="img/logo.png">
         </header>
+        <nav>
+            <ul>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="usuarios/verAreaCliente.php">área cliente</a></li>
+                <li><a href=""></a></li>
+            </ul>
+        </nav>
         <section id="central">
             <section class="tablacasas">
                 <div class="minicab">Inmuebles actuales</div>
@@ -124,11 +131,11 @@ $modelo = new ModeloInmueble($bd);;
             </section>
             <section class="gestform">
                 <div class="minicab">Nuevo inmueble</div>
-                <form action="phpInsertar.php" method="POST" enctype="multipart/form-data" autocomplete="no">
+                <form action="phpInsertar.php" method="POST" enctype="multipart/form-data" autocomplete="off">
                     <input type="hidden" name="vendedor" value="<?php echo $objetoUser->getLogin(); ?>">
                     <label>Dirección: <input type="text" name="direccion" value="" placeholder="C/Piruleta nº10, Bloque 4, 3ºA" maxlength="80"/></label>
                     <label>Población: <input type="text" name="poblacion" value="" placeholder="Motril" maxlength="60"/></label>
-                    <label>C.P.: <input type="number" name="codigopostal" value="" placeholder="18600" maxlength="5"/></label>
+                    <label>C.P.: <input type="number" name="codigopostal" value="" placeholder="18600" max="99999"/></label>
                     <label>Provincia: <input type="text" name="provincia" value="" placeholder="Granada" maxlength="60"/></label>
                     <label>Tipo inmueble
                         <select name="tipo">
@@ -142,7 +149,7 @@ $modelo = new ModeloInmueble($bd);;
                             <option>Oficina</option>
                         </select>
                     </label>
-                    <label>Precio: <input type="number" name="precio" value="" placeholder="1000" maxlength="10"/></label>(cambiar comas js)
+                    <label>Precio: <input type="number" name="precio" value="" placeholder="1000" max="9999999999"/></label>
                     <label>Tipo oferta:
                         <select name="tipooferta">
                             <option>Alquiler</option>
@@ -152,8 +159,8 @@ $modelo = new ModeloInmueble($bd);;
                     <label>Descripcion:<br/>
                         <textarea name="descripcion" rows="4" cols="20"></textarea>
                     </label>
-                    <label>Habitaciones: <input type="number" name="habitaciones" value="" placeholder="2" maxlength="3"/></label>
-                    <label>Baños: <input type="number" name="banos" value="" placeholder="1" maxlength="3"/></label>
+                    <label>Habitaciones: <input type="number" name="habitaciones" value="" placeholder="2" max="999"/></label>
+                    <label>Baños: <input type="number" name="banos" value="" placeholder="1" max="999"/></label>
                     <label>Imagenes: <input type="file" id="files" name="fotos[]" multiple /></label>
                     <output id="list"></output>
                     <input type="submit" value="Añadir" />

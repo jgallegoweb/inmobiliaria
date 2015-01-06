@@ -37,7 +37,14 @@ $objeto = $sesion->getUsuario();
         <section id="central">
             <section>
                 <a href="../index.php">Inicio</a>
-                <a href="../viewGestion.php">Gestión de mis anuncios</a>
+                <a href="../viewGestion.php">Gestión de anuncios</a>
+                <?php
+                    if($objeto->getIsroot() == 1){
+                ?>
+                <a href="backUsuarios.php">Gestión de usuarios</a>
+                <?php
+                    }
+                ?>
                 <a href="verEditar.php">Ver perfil</a>
                 <a href="phpSalir.php">Cerrar sesión</a>
             </section>

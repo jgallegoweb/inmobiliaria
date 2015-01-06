@@ -8,6 +8,12 @@ class Validar {
     static function isCorreo($v){
         return filter_var($v, FILTER_VALIDATE_EMAIL);
     }
+    static function isLogin($v){
+        if(self::isCorreo($v)){
+            return false;
+        }
+        return true;
+    }
     static function isEntero($v){
         return filter_var($v, FILTER_VALIDATE_INT);
     }

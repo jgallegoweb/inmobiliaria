@@ -28,7 +28,7 @@
     </head>
     <body>
         <header>
-            <img src="img/logo.png">
+            <a href="index.php"><img src="img/logo.png"></a>
         </header>
         <section id="buscador">
             <form action="index.php">

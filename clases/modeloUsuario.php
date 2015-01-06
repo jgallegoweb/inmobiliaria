@@ -60,7 +60,7 @@ class modeloUsuario {
         $param['email']=$objetoNuevo->getEmail();
         $param['isactivo']=$objetoNuevo->getIsactivo();
         $param['isroot']=$objetoNuevo->getIsroot();
-        $param['rol']=$objetoNuevo->getFechalogin();
+        $param['rol']=$objetoNuevo->getRol();
         $r=$this->bd->setConsulta($sql, $param);
         if(!$r){
             return -1;
@@ -75,14 +75,23 @@ class modeloUsuario {
         $param['email']=$objetoNuevo->getEmail();
         $param['isactivo']=$objetoNuevo->getIsactivo();
         $param['isroot']=$objetoNuevo->getIsroot();
-        $param['rol']=$objetoNuevo->getFechalogin();
+        $param['rol']=$objetoNuevo->getRol();
         $r=$this->bd->setConsulta($sql, $param);
         if(!$r){
             return -1;
         }
         return $this->bd->getNumeroFilas();
     }
-    
+    function editLogin(Usuario $objeto, $loginpk){
+        $sql = "UPDATE $this->tabla SET login=:login WHERE login=:loginpk";
+        $param['login']=$objeto->getLogin();
+        $param['loginpk']=$loginpk;
+        $r=$this->bd->setConsulta($sql, $param);
+        if(!$r){
+            return -1;
+        }
+        return $this->bd->getNumeroFilas();
+    }
     function get($login){
         $sql = "SELECT * FROM $this->tabla where login=:login";
         $param['login']=$login;

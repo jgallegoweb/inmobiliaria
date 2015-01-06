@@ -17,7 +17,7 @@
     $sesion = new Sesion();
     $error=Leer::get("e");
     $sesion->noAutentificado("usuarios/verLogin.php");
-    $objetoUser = $modeloUser->get($sesion->getUsuario());
+    $objetoUser = $sesion->getUsuario();
     
     if($objeto->getVendedor()!=$objetoUser->getLogin() && $objetoUser->getRol()!="administrador"){
         header("Location: viewGestion.php?error=12");
@@ -35,13 +35,20 @@
         <script src="js/codigo.js"></script>
     </head>
     <body>
+        <nav>
+            <ul>
+                <li><a href="index.php">Inicio</a></li>
+                <li><a href="usuarios/verAreaCliente.php">área cliente</a></li>
+                <li><a href="viewGestion.php">Gestión pisos</a></li>
+            </ul>
+        </nav>
         <section class="gestform">
                 <div class="minicab">Editar inmueble</div>
-                <form action="phpEditar.php" method="POST" enctype="multipart/form-data" autocomplete="no">
+                <form action="phpEditar.php" method="POST" enctype="multipart/form-data" autocomplete="off">
                     <input type="hidden" name="id" value="<?php echo $objeto->getId(); ?>">
                     <label>Dirección: <input type="text" name="direccion" value="<?php echo $objeto->getDireccion(); ?>" placeholder="C/Piruleta nº10, Bloque 4, 3ºA" maxlength="80"/></label>
                     <label>Población: <input type="text" name="poblacion" value="<?php echo $objeto->getPoblacion(); ?>" placeholder="Motril" maxlength="60"/></label>
-                    <label>C.P.: <input type="number" name="codigopostal" value="<?php echo $objeto->getCodigopostal(); ?>" placeholder="18600" maxlength="5"/></label>
+                    <label>C.P.: <input type="number" name="codigopostal" value="<?php echo $objeto->getCodigopostal(); ?>" placeholder="18600"/></label>
                     <label>Provincia: <input type="text" name="provincia" value="<?php echo $objeto->getProvincia(); ?>" placeholder="Granada" maxlength="60"/></label>
                     <label>Tipo inmueble
                         <select name="tipo">

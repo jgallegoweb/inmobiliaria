@@ -5,7 +5,7 @@ $sesion = new Sesion();
 $sesion->noAutentificado("../index.php");
 $bd = new BaseDatos();
 $modelo = new modeloUsuario($bd);
-$objeto = $modelo->get($sesion->getUsuario());
+$objeto = $sesion->getUsuario();
 $error=0;
 ?>
 <!DOCTYPE html>
@@ -21,6 +21,10 @@ $error=0;
         <header>
             <img src="../img/logo.png">
         </header>
+        <ul>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="verAreaCliente.php">área cliente</a></li>
+        </ul>
         <section id="buscador">
             <h1>Registrate o Identifícate</h1>
         </section>
