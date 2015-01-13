@@ -24,7 +24,8 @@ class Validar {
         return self::isCondicion($v,'/^[6-9][0-9]{8}$/');
     }
     static function isClave($v){
-        return self::isCondicion($v, '/[A-Za-z0-9]{6,10}$/');
+        //return self::isCondicion($v, '/[A-Za-z0-9]{6,10}$/');
+        return true;
     }
     static function isURL($v){
         return filter_var($v, FILTER_VALIDATE_URL);

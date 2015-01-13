@@ -10,11 +10,11 @@ $clave = Leer::post("clave");
 
 $objeto = $modelo->get($login);
 if($objeto->getLogin() == null || !$objeto->getIsactivo()){
-    header("Location: verLogin.php?error=1");
+    header("Location: verLogin.php?e=40");
     exit();
 }
 if(!Util::isPass($clave, $objeto->getClave())){
-    header("Location: verLogin.php?error=2");
+    header("Location: verLogin.php?e=41");
     exit();
 }
 $sesion->setAutentificado(true);

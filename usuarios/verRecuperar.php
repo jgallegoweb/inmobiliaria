@@ -1,9 +1,9 @@
 <?php
 require '../require/comun.php';
 $sesion = new Sesion();
-$sesion->siAutentificado("../index.php");
+$sesion->siAutentificado("../index.php?e=20");
 $bd = new BaseDatos();
-$mensaje =  Leer::get("mensaje");
+$error =  Leer::get("e");
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,22 +22,11 @@ $mensaje =  Leer::get("mensaje");
             <h1>Registrate o Identifícate</h1>
         </section>
         <?php
-        if($mensaje!=0){
+        if($error!=null){
         ?>
         <section id="error">
             <?php
-                if($mensaje==1){
-            ?>
-                No existe el usuario o el correo.
-            <?php
-                }
-            ?>
-            <?php
-                if($mensaje==2){
-            ?>
-                Se ha enviado un mensaje a su dirección de correo electrónico.
-            <?php
-                }
+            echo Util::muestraMensaje($error);
             ?>
         </section>
         <?php 
@@ -45,9 +34,9 @@ $mensaje =  Leer::get("mensaje");
         ?>
         <section>
             <div class="centrador">
-                <div class="iden">
+                <div class="iden centrado">
                     <form action="phpRecuperar.php" method="POST">
-                        <label>Usuario / Correo<br/><input type="text" name="recuerdo" value="" /></label>
+                        <label><br/><input type="text" class="login-1" name="recuerdo" value="" placeholder="Usuario o Email"/></label>
                         <input type="submit" value="Recuperar pass" />
                     </form>
                     

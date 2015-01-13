@@ -2,7 +2,7 @@
 
 require '../require/comun.php';
 $sesion = new Sesion();
-$sesion->noAutentificado("../index.php");
+$sesion->noAutentificado("../index.php?e=30");
 $bd = new BaseDatos();
 $modelo = new modeloUsuario($bd);
 $objeto = $sesion->getUsuario();
@@ -24,13 +24,12 @@ if($clave!=null && $clave!=""){
         if($clave == $clave2 && Validar::isClave($clave)){
             $objeto->setClave($clave);
             $r=$modelo->edit($objeto);
-            
         }else{
-            header("Location: verEditar.php?mensaje=2");
+            header("Location: verEditar.php?e=50");
             exit();
         }
     }else{
-        header("Location: verEditar.php?mensaje=3");
+        header("Location: verEditar.php?e=41");
         exit();
     }
 }else{
@@ -39,7 +38,7 @@ if($clave!=null && $clave!=""){
 
 if($r!=-1){
     $sesion->setUsuario($objeto);
-    header("Location: verEditar.php?mensaje=0");
+    header("Location: verEditar.php?e=0");
 }else{
-    header("Location: verEditar.php?mensaje=1");
+    header("Location: verEditar.php?e=9");
 }

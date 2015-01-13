@@ -6,7 +6,7 @@ $sesion->noAutentificado("../index.php");
 $bd = new BaseDatos();
 $modelo = new modeloUsuario($bd);
 $objeto = $sesion->getUsuario();
-$error=0;
+$error = Leer::get("e");
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,22 +29,11 @@ $error=0;
             <h1>Registrate o Identifícate</h1>
         </section>
         <?php
-        if($error!=0){
+        if($error!=null){
         ?>
         <section id="error">
             <?php
-                if($error==1){
-            ?>
-                No existe el usuario
-            <?php
-                }
-            ?>
-            <?php
-                if($error==2){
-            ?>
-                Contraseña incorrecta
-            <?php
-                }
+            echo Util::muestraMensaje($error);
             ?>
         </section>
         <?php 

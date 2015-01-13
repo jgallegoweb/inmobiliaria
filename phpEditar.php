@@ -2,6 +2,9 @@
 
 require 'require/comun.php';
 
+$sesion = new Sesion();
+$sesion->noAutentificado("index.php?e=30");
+
 $id = Leer::post("id");
 $direccion = Leer::post("direccion");
 $poblacion = Leer::post("poblacion");

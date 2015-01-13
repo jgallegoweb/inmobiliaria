@@ -1,7 +1,7 @@
 <?php
 require '../require/comun.php';
 $sesion = new Sesion();
-$sesion->siAutentificado("../index.php");
+$sesion->siAutentificado("../index.php?e=20");
 $bd = new BaseDatos();
 $modelo = new modeloUsuario($bd);
 
@@ -20,9 +20,9 @@ if($cod == $codbueno){
         header("Location: ../index.php");
         exit();
     }
-    header("Location: verNuevaPass.php?mensaje=2");
+    header("Location: verNuevaPass.php?e=50");
     exit();
 }
-header("Location: verNuevaPass.php?mensaje=1");
+header("Location: verNuevaPass.php?mensaje=51");
 exit();
 

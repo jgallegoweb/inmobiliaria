@@ -140,7 +140,7 @@ class Sesion {
     function administrador($destino="index.php"){
         $usuario = $this->getUsuario();
         if(!$this->isAutentificado() || !$usuario->getIsroot()){
-            redirigir($destino);
+            $this->redirigir($destino);
         }
     }
     function isAdministrador(){

@@ -54,7 +54,7 @@ $filas = $modelo->getListPaginado($pagina, Configuracion::RPP, $condicion, $para
             <?php
                 }
             ?>
-            <img src="img/logo.png">
+            <img src="img/logo.png" alt="Logo de Homeless">
             
         </header>
         <section id="buscador">
@@ -92,10 +92,12 @@ $filas = $modelo->getListPaginado($pagina, Configuracion::RPP, $condicion, $para
             </form>
         </section>
         <?php
-        if($error==1){
+        if($error!=null){
         ?>
         <section id="error">
-            No se ha podido acceder al inmueble seleccionado
+            <?php
+            echo Util::muestraMensaje($error);
+            ?>
         </section>
         <?php 
         }
@@ -145,10 +147,11 @@ $filas = $modelo->getListPaginado($pagina, Configuracion::RPP, $condicion, $para
             <div class="clear"></div>
         </section>
         <footer>
+            <div id="paginacion">
             <?php
-                echo Util::getEnlacesPaginacion($pagina, $paginas, Entorno::getEnlaceCarpeta("index.php?p"))
+                echo Util::getEnlacesPaginacion($pagina, $paginas, Entorno::getEnlaceCarpeta("index.php?p"));
             ?>
-        
+            </div>
         </footer>
     </body>
 </html>

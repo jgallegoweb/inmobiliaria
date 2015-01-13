@@ -3,24 +3,24 @@
     $bd = new BaseDatos();
     $modelo = new ModeloInmueble($bd);
     if(Leer::get("id")==null){
-        header("Location: viewGestion.php?e=11");
+        header("Location: viewGestion.php?e=1");
         exit();
     }
     $id = Leer::get("id");
     $objeto = $modelo->get($id);
     if($objeto->getId()==null){
-        header("Location: viewGestion.php?e=11");
+        header("Location: viewGestion.php?e=1");
         exit();
     }
     
     $modeloUser = new modeloUsuario($bd);
     $sesion = new Sesion();
     $error=Leer::get("e");
-    $sesion->noAutentificado("usuarios/verLogin.php");
+    $sesion->noAutentificado("usuarios/verLogin.php?e=32");
     $objetoUser = $sesion->getUsuario();
     
     if($objeto->getVendedor()!=$objetoUser->getLogin() && $objetoUser->getRol()!="administrador"){
-        header("Location: viewGestion.php?error=12");
+        header("Location: viewGestion.php?error=31");
         exit();
     }
 ?>
@@ -35,6 +35,17 @@
         <script src="js/codigo.js"></script>
     </head>
     <body>
+        <?php
+        if($error!=null){
+        ?>
+        <section id="error">
+            <?php
+            echo Util::muestraMensaje($error);
+            ?>
+        </section>
+        <?php 
+        }
+        ?>
         <nav>
             <ul>
                 <li><a href="index.php">Inicio</a></li>

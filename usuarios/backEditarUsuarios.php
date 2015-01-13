@@ -5,7 +5,7 @@ $bd = new BaseDatos();
 $modelo = new modeloUsuario($bd);
 $sesion = new Sesion();
 $error=Leer::get("e");
-$sesion->administrador("../");
+$sesion->administrador("../index.php?e=31");
 $objeto = $modelo->get(Leer::get("login"));
 ?>
 <!DOCTYPE html>

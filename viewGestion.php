@@ -4,7 +4,7 @@ $bd = new BaseDatos();
 $modeloUser = new modeloUsuario($bd);
 $sesion = new Sesion();
 $error=Leer::get("e");
-$sesion->noAutentificado("usuarios/verLogin.php");
+$sesion->noAutentificado("usuarios/verLogin.php?e=32");
 $objetoUser = $sesion->getUsuario();
 
 $modelo = new ModeloInmueble($bd);;
@@ -63,6 +63,17 @@ $modelo = new ModeloInmueble($bd);;
                 <li><a href=""></a></li>
             </ul>
         </nav>
+        <?php
+        if($error!=null){
+        ?>
+        <section id="error">
+            <?php
+            echo Util::muestraMensaje($error);
+            ?>
+        </section>
+        <?php 
+        }
+        ?>
         <section id="central">
             <section class="tablacasas">
                 <div class="minicab">Inmuebles actuales</div>

@@ -13,6 +13,7 @@
         header("Location: index.php?e=1");
         exit();
     }
+    $error=  Leer::get("e");
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,6 +65,17 @@
                 <div class="clear"></div>
             </form>
         </section>
+        <?php
+        if($error!=null){
+        ?>
+        <section id="error">
+            <?php
+            echo Util::muestraMensaje($error);
+            ?>
+        </section>
+        <?php 
+        }
+        ?>
         <section>
             <div id="informacionpiso">
                 <div class="infopisob">

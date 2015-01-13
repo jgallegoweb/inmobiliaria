@@ -2,7 +2,7 @@
 
 require '../require/comun.php';
 $sesion = new Sesion();
-$sesion->siAutentificado("../index.php");
+$sesion->siAutentificado("../index.php?e=20");
 $bd = new BaseDatos();
 $modelo = new modeloUsuario($bd);
 
@@ -19,7 +19,7 @@ if(Validar::isCorreo($recuerdo)){
 $objeto = $modelo->get($recuerdo);
 
 if($objeto->getLogin()==null){
-    header("Location: verRecuperar.php?mensaje=1");
+    header("Location: verRecuperar.php?e=52");
 }
 //enviar correo
 $codigo = md5($objeto->getEmail().Configuracion::PEZ.$objeto->getLogin());

@@ -2,6 +2,9 @@
 
 require 'require/comun.php';
 
+$sesion = new Sesion();
+$sesion->noAutentificado("index.php?e=30");
+
 $direccion = Leer::post("direccion");
 $poblacion = Leer::post("poblacion");
 $codigopostal = Leer::post("codigopostal");
@@ -39,8 +42,8 @@ $objeto->setId($r);
 $rf = $modelo->addFoto($objeto);
 
 if($r ==-1 || $rf == -1){
-    header("Location: viewGestion.php?error=1");
+    header("Location: viewGestion.php?error=6");
     exit();
 }
-header("Location: viewGestion.php?error=0");
+header("Location: viewGestion.php?error=5");
 exit();

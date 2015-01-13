@@ -4,7 +4,7 @@
 */
 body{
     font-family: 'Ubuntu', sans-serif;
-    background: #c0d6fb;
+    background: #5a98ff;
 }
 header img{
     display: block;
@@ -154,11 +154,7 @@ label{
 .miniatura img{
     width: 200px;
 }
-footer{
-    height: 200px;
-    margin-top: 25px;
-    clear: both;
-}
+
 #error{
     background-color: #ffff66;
     text-align: center;
@@ -170,22 +166,53 @@ footer{
     font-size: 30px;
     line-height: 140px
 }
+#titulolugar h1{
+    text-align: center;
+    font-size: 30px;
+    line-height: 60px;
+    color: white;
+}
+#titulolugar{
+    height: 60px;
+    background-color: #343434;
+}
+.centrador{
+    width: 600px;
+    margin: 0 auto;
+}
+.centrado{
+    float: none;
+    display: block;
+    margin: 0 auto;
+    
+}
 .iden{
     margin-top: 30px;
     width: 48%;
-
-    background-color: #6486e0;
+    border-radius: 10px;
+    background-color: #c5e2ff;
+    
+    margin-bottom: 30px;
+    overflow: hidden;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    1px 1px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         1px 1px 5px 0px rgba(50, 50, 50, 0.75);
+}
+.flotante{
     float: left;
 }
 .iden:nth-child(2){
-    background-color: #53b3e5;
     margin-left: 4%;
     
 }
-.centrador{
-    width: 900px;
-    margin: 0 auto;
+.iden input[type="submit"]{
+    width: 100%;
+    padding: 10px 0;
+    background-color: #68d68e;
+    border: 0px;
+    border-radius: 0px;
 }
+
 .iden label{
     display: block;
     margin: 0 auto;
@@ -195,8 +222,154 @@ footer{
     margin: 0 auto;
 }
 .iden input {
-    padding: 14px 4px;
+    padding: 10px 4px;
     font-family: 'Ubuntu', sans-serif;
     font-size: 18px;
+    font-weight: bold;
     border-radius: 4px;
+    width: 100%;
+    text-align: center;
+}
+
+.login-1{
+    background-image: url(../img/user60.png);
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+}
+.pass-1{
+    background-image: url(../img/key126.png);
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+}
+.email-1{
+    background-image: url(../img/arroba1.png);
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+}
+.personal-1{
+    background-image: url(../img/personal18.png);
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+}
+/*******************************************************************************/
+
+footer{
+    height: 200px;
+    margin-top: 25px;
+    clear: both;
+    background-color: rgb(52, 52, 52);
+    padding-top: 20px;
+}
+
+#paginacion{
+    width: 825px;
+    margin: 0 auto;
+    display: flex;
+}
+#paginacion a:not(.pagactual){
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #242424;
+    text-decoration: none;
+    font-size: 1.3em;
+    margin-left: 30px;
+    color: white;
+background: rgb(80, 80, 80);
+background: -moz-linear-gradient(90deg, rgb(80, 80, 80) 35%, rgb(52, 52, 52) 75%);
+background: -webkit-linear-gradient(90deg, rgb(80, 80, 80) 35%, rgb(52, 52, 52) 75%);
+background: -o-linear-gradient(90deg, rgb(80, 80, 80) 35%, rgb(52, 52, 52) 75%);
+background: -ms-linear-gradient(90deg, rgb(80, 80, 80) 35%, rgb(52, 52, 52) 75%);
+background: linear-gradient(180deg, rgb(80, 80, 80) 35%, rgb(52, 52, 52) 75%);
+}
+#paginacion a:nth-child(1){
+    margin-left: 0px;
+}
+
+#paginacion a:not(.pagactual):hover{
+background: rgb(80, 80, 80);
+background: -moz-linear-gradient(90deg, rgb(80, 80, 80) 10%, rgb(52, 52, 52) 53%);
+background: -webkit-linear-gradient(90deg, rgb(80, 80, 80) 10%, rgb(52, 52, 52) 53%);
+background: -o-linear-gradient(90deg, rgb(80, 80, 80) 10%, rgb(52, 52, 52) 53%);
+background: -ms-linear-gradient(90deg, rgb(80, 80, 80) 10%, rgb(52, 52, 52) 53%);
+background: linear-gradient(180deg, rgb(80, 80, 80) 10%, rgb(52, 52, 52) 53%);
+}
+
+.pagactual{
+    background-color: #343434;
+    border: 1px solid #242424;
+    border-bottom: 2px solid #1766c1;
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    
+    text-decoration: none;
+    font-size: 1.3em;
+    margin-left: 30px;
+    color: white;
+background: rgb(80, 80, 80);
+background: -moz-linear-gradient(90deg, rgb(80, 80, 80) 35%, rgb(52, 52, 52) 75%);
+background: -webkit-linear-gradient(90deg, rgb(80, 80, 80) 35%, rgb(52, 52, 52) 75%);
+background: -o-linear-gradient(90deg, rgb(80, 80, 80) 35%, rgb(52, 52, 52) 75%);
+background: -ms-linear-gradient(90deg, rgb(80, 80, 80) 35%, rgb(52, 52, 52) 75%);
+background: linear-gradient(180deg, rgb(80, 80, 80) 35%, rgb(52, 52, 52) 75%);
+}
+
+
+/**********************************************************************************/
+
+#principalcliente{
+    width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+#principalcliente a{
+    flex: 1;
+    
+    height: 100px;
+    line-height: 160px;
+    
+    text-align: center;
+    min-width: 300px;
+    text-decoration: none;
+    color: black;
+    margin: 5px;
+    background-position: center 10px;
+    background-repeat: no-repeat;
+    background-size: 60px;
+}
+
+.salir-1{
+    background-image: url(../img/door9.png);
+    background-color: #f54141;
+    border: 2px solid #b92121;
+}
+.inicio-1{
+    background-image: url(../img/house58.png);
+    background-color: #ffe3f6;
+    border: 2px solid #c6aebe;
+}
+.anuncios-1{
+    background-image: url(../img/person193.png);
+    background-color: #4cf25f;
+    border: 2px solid #37af45;
+}
+.usuarios-1{
+    background-image: url(../img/users6.png);
+    background-color: #2e54f4;
+    border: 2px solid #243da7;
+}
+.perfil-1{
+    background-image: url(../img/businessman25.png);
+    background-color: #f5f541;
+    border: 2px solid #adad2f;
+}
+
+.rojillo{
+    background-color: #ff9999;
+}
+.verdecillo{
+    background-color: #99ff99;
 }

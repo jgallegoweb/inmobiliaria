@@ -1,5 +1,8 @@
 <?php
 require 'require/comun.php';
+$sesion = new Sesion();
+$sesion->noAutentificado("index.php?e=30");
+
 $bd = new BaseDatos();
 $modelo = new ModeloInmueble($bd);
 $id = Leer::get("id");

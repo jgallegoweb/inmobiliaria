@@ -43,7 +43,11 @@ class Util {
         }
 
         foreach($x as $valor){
-            $html .= "<a href='$enlace=".($valor)."'>".($valor+1)."</a> ";
+            if($valor!=$p){
+                $html .= "<a href='$enlace=".($valor)."'>".($valor+1)."</a> ";
+            }else{
+                $html .= "<a class='pagactual' href='#'>".($valor+1)."</a> ";
+            }
         }
         if($p+1>$paginas-1){
             $html .= "<a href='#'>&gt;</a> ";
@@ -99,5 +103,51 @@ class Util {
             return true;
         }
         return false;
+    }
+    static function muestraMensaje($mensaje){
+        switch ($mensaje) {
+            case 0:
+                return "Editado con exito";
+            case 1:
+                return "No se pudo encontrar el inmueble seleccinado";
+            case 31:
+                return "No tiene permisos para acceder a esa página";
+            case 30:
+                return "Inicie sesión para poder hacer cambios";
+            case 20:
+                return "Ya está logueado en el sistema";
+            case 32:
+                return "Inicie sesión para poder acceder";
+            case 40:
+                return "No existe el usuario introducido";
+            case 41:
+                return "Contraseña incorrecta";
+            case 50:
+                return "Las contraseñas no coinciden";
+            case 51:
+                return "Ha ocurrido un error, pruebe a solicitar una recuperación de contraseña otra vez";
+            case 52:
+                return "Usuario o Email desconocidos";
+            case 53:
+                return "Correo confirmado con éxito";
+            case 9:
+                return "No se ha podido editar";
+            case 4:
+                return "Ha ocurrido un error, intentelo más tarde";
+            case 3:
+                return "No ha subido fotos";
+            case 5:
+                return "Anuncio creado con exito";
+            case 6:
+                return "No se ha creado el anuncio por algún error";
+            case 7:
+                return "Eliminado con exito";
+            case 8:
+                return "No se pudo eliminar";
+            case 99:
+                return "Algo ha salido mal";
+            default:
+                return "Error desconocido";
+        }
     }
 }

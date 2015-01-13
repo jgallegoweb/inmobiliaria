@@ -2,6 +2,9 @@
 
 require 'require/comun.php';
 
+$sesion = new Sesion();
+$sesion->noAutentificado("index.php?e=30");
+
 $id = Leer::post("id");
 
 $subir = new SubirMultiple("fotos");
@@ -21,7 +24,7 @@ $subir->subir();
 $fotos = $subir->getNombres();
 
 if($fotos==null){
-    header("Location: viewEditar.php?id=$id&e=2");
+    header("Location: viewEditar.php?id=$id&e=3");
     exit();
 }
 $bd = new BaseDatos();
@@ -32,7 +35,7 @@ print_r($objeto->getFotos());
 $r = $modelo->addFoto($objeto);
 
 if($r==-1){
-    header("Location: viewEditar.php?id=$id&e=1");
+    header("Location: viewEditar.php?id=$id&e=4");
     exit();
 }
 header("Location: viewEditar.php?id=$id&e=0");

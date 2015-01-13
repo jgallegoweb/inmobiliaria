@@ -2,7 +2,7 @@
 
 require '../require/comun.php';
 $sesion = new Sesion();
-$sesion->administrador("../index.php");
+$sesion->administrador("../index.php?e=31");
 $bd = new BaseDatos();
 $modelo = new modeloUsuario($bd);
 

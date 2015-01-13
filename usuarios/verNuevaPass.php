@@ -1,7 +1,7 @@
 <?php
 require '../require/comun.php';
 $bd = new BaseDatos();
-$mensaje =  Leer::get("mensaje");
+$error =  Leer::get("e");
 
 ?>
 <!DOCTYPE html>
@@ -21,10 +21,12 @@ $mensaje =  Leer::get("mensaje");
             <h1>Elige una nueva pass</h1>
         </section>
         <?php
-        if($mensaje!=0){
+        if($error!=null){
         ?>
         <section id="error">
-            Ha ocurrido un error, inténtelo de nuevo.
+            <?php
+            echo Util::muestraMensaje($error);
+            ?>
         </section>
         <?php 
         }

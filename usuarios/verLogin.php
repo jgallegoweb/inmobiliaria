@@ -1,9 +1,9 @@
 <?php
 require '../require/comun.php';
 $sesion = new Sesion();
-$sesion->siAutentificado("../index.php");
+$sesion->siAutentificado("../index.php?e=20");
 $bd = new BaseDatos();
-$error=  Leer::get("error");
+$error=  Leer::get("e");
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,26 +19,16 @@ $error=  Leer::get("error");
         <header>
             <img src="../img/logo.png">
         </header>
-        <section id="buscador">
+        <section id="titulolugar">
             <h1>Registrate o Identifícate</h1>
         </section>
+        
         <?php
-        if($error!=0){
+        if($error!=null){
         ?>
         <section id="error">
             <?php
-                if($error==1){
-            ?>
-                No existe el usuario
-            <?php
-                }
-            ?>
-            <?php
-                if($error==2){
-            ?>
-                Contraseña incorrecta
-            <?php
-                }
+            echo Util::muestraMensaje($error);
             ?>
         </section>
         <?php 
@@ -46,24 +36,24 @@ $error=  Leer::get("error");
         ?>
         <section>
             <div class="centrador">
-                <div class="iden">
+                <div class="iden flotante">
                     <form action="phpLogin.php" method="POST">
-                        <label>Usuario / Correo<br/><input type="text" name="login" value="" /></label>
-                        <label>Contraseña<br/><input type="password" name="clave" value="" /></label>
+                        <label><br/><input type="text" class="login-1" name="login" value="" placeholder="Usuario o Email"/></label>
+                        <label><br/><input type="password" class="pass-1" name="clave" value="" placeholder="Password"/></label>
                         <input type="submit" value="Iniciar sesión" />
                     </form>
                     
                 </div>
-                <div class="iden">
-                    <form action="phpEditarUser.php" method="POST" enctype="multipart/form-data">
-                        <label>Usuario<br/><input type="text" name="login" id="login" value="" /><span></span></label>
-                        <label>Contraseña<br/><input type="password" name="clave" value="" /></label>
-                        <label>Confirma contraseña<br/><input type="password" name="clave" value="" /></label>
-                        <label>Nombre<br/><input type="text" name="nombre" value="" /></label>
-                        <label>Apellidos<br/><input type="text" name="apellido" value="" /></label>
-                        <label>Email<br/><input type="email" name="email" value="" /></label>
+                <div class="iden flotante">
+                    <form action="phpAlta.php" method="POST" enctype="multipart/form-data">
+                        <label><br/><input type="text" class="login-1" name="login" id="login" value="" placeholder="Usuario"/><span></span></label>
+                        <label><br/><input type="password" class="pass-1" name="clave" value="" placeholder="Password"/></label>
+                        <label><br/><input type="password" class="pass-1" name="clave1" value="" placeholder="Confirma Password"/></label>
+                        <label><br/><input type="text" class="personal-1" name="nombre" value="" placeholder="Nombre"/></label>
+                        <label><br/><input type="text" class="personal-1" name="apellido" value="" placeholder="Apellido"/></label>
+                        <label><br/><input type="email" class="email-1" name="email" value="" placeholder="Email"/></label>
                         <div class="clear"></div>
-                        <input type="submit" value="Guardar cambios" />
+                        <input type="submit" value="Registrarse" />
                     </form>
                     
                 </div>
@@ -83,9 +73,11 @@ $error=  Leer::get("error");
             var verrespuesta = function(textojson){
                 var json =  JSON.parse(textojson);
                 if(json.si == false){
-                    login.nextElementSibling.textContent = "Este usuario ya existe"; 
+                    login.classList.remove("verdecillo"); 
+                    login.classList.add("rojillo");
                 }else{
-                    login.nextElementSibling.textContent = "Disponible"; 
+                    login.classList.remove("rojillo"); 
+                    login.classList.add("verdecillo");
                 }
             }
     </script>

@@ -14,9 +14,10 @@ class modeloUsuario {
         $sql="INSERT INTO $this->tabla VALUES(:login, :clave, :nombre,"
                 . " :apellidos, :email, CURDATE(), :isactivo, :isroot,"
                 . " :rol, null)";
-        echo $sql;
         $param['login']=$objeto->getLogin();
-        $param['clave'] = Util::cifrarPass($objeto->getClave());
+        $x=Util::cifrarPass($objeto->getClave());
+        echo "//$x//";
+        $param['clave']=$x;
         $param['nombre']=$objeto->getNombre();
         $param['apellidos']=$objeto->getApellido();
         $param['email']=$objeto->getEmail();
