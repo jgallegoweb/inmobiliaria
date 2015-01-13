@@ -4,6 +4,7 @@ require 'require/comun.php';
 
 $sesion = new Sesion();
 $sesion->noAutentificado("index.php?e=30");
+$objetoUser = $sesion->getUsuario();
 
 $direccion = Leer::post("direccion");
 $poblacion = Leer::post("poblacion");
@@ -15,7 +16,7 @@ $tipooferta = Leer::post("tipooferta");
 $descripcion = Leer::post("descripcion");
 $habitaciones = Leer::post("habitaciones");
 $banos = Leer::post("banos");
-$vendedor = Leer::post("vendedor");
+$vendedor = $objetoUser->getLogin();
 
 $subir = new SubirMultiple("fotos");
 

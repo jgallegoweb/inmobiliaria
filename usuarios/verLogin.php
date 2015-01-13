@@ -20,7 +20,7 @@ $error=  Leer::get("e");
             <img src="../img/logo.png">
         </header>
         <section id="titulolugar">
-            <h1>Registrate o Identifícate</h1>
+            <h1>Identifícate o Registrate</h1>
         </section>
         
         <?php

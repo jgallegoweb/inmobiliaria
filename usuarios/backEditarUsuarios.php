@@ -34,26 +34,15 @@ $objeto = $modelo->get(Leer::get("login"));
             <ul>
                 <li><a href="../index.php">Inicio</a></li>
                 <li><a href="verAreaCliente.php">área cliente</a></li>
-                <li><a href="backUsuarios.php">Gestión pisos</a></li>
+                <li><a href="backUsuarios.php">ver usuarios</a></li>
             </ul>
         </nav>
         <?php
-        if($error!=0){
+        if($error!=null){
         ?>
         <section id="error">
             <?php
-                if($error==1){
-            ?>
-                No existe el usuario
-            <?php
-                }
-            ?>
-            <?php
-                if($error==2){
-            ?>
-                Contraseña incorrecta
-            <?php
-                }
+            echo Util::muestraMensaje($error);
             ?>
         </section>
         <?php 

@@ -39,13 +39,18 @@ $filas = $modelo->getListPaginado($pagina, Configuracion::RPP, $condicion, $para
             <?php
                 if(!$sesion->isAutentificado()){
             ?>
-            <form action="usuarios/phpLogin.php" method="POST">
-                <label>Usuario / Correo<br/><input type="text" name="login" value="" /></label>
-                <label>Contraseña<br/><input type="password" name="clave" value="" /></label>
-                <input type="submit" value="Iniciar sesión" />
-            </form>
-            <br/>
-            <a href="usuarios/verRecuperar.php">Olvidé mi clave</a> / <a href="usuarios/verLogin.php">Registrarme</a>
+            <div class="fijo-log">
+                <div class="iden flotante" style="background-color: #858585;">
+                    <form action="usuarios/phpLogin.php" method="POST">
+                        <label><br/><input type="text" class="login-1" name="login" value="" placeholder="Usuario o Email"/></label>
+                        <label><br/><input type="password" class="pass-1" name="clave" value="" placeholder="Password"/></label>
+                        <br/>
+                    <a href="usuarios/verRecuperar.php">Olvidé mi clave</a> / <a href="usuarios/verLogin.php">Registrarme</a><br/>
+                        <input type="submit" value="Iniciar sesión" />
+                    </form>
+                    
+                </div>
+            </div>
             <?php
                 }else{
             ?>

@@ -373,3 +373,13 @@ background: linear-gradient(180deg, rgb(80, 80, 80) 35%, rgb(52, 52, 52) 75%);
 .verdecillo{
     background-color: #99ff99;
 }
+
+.fijo-log{
+    text-align: center;
+    width: 600px;
+    position: fixed;
+}
+.fijo-log a{
+    color:white;
+    
+}

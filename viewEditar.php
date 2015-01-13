@@ -87,6 +87,14 @@
                     </label>
                     <label>Habitaciones: <input type="number" name="habitaciones" value="<?php echo $objeto->getHabitaciones(); ?>" placeholder="2" maxlength="3"/></label>
                     <label>Baños: <input type="number" name="banos" value="<?php echo $objeto->getBanos(); ?>" placeholder="1" maxlength="3"/></label>
+                    <?php
+                        if($objetoUser->getRol()=="administrador"){
+                    ?>
+                    <label>Vendedor: <input type="text" value="<?php echo $objeto->getVendedor(); ?>" placeholder="1" maxlength="3" disabled="disabled"/></label>
+                    <?php
+                        }
+                    ?>
+                    
                     <div class="clear"></div>
                     <input type="submit" value="Guardar edición" />
                     <input type="reset" id="limp" value="Descartar cambios" />

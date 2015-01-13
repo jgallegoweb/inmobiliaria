@@ -19,7 +19,7 @@ $error =  Leer::get("e");
             <img src="../img/logo.png">
         </header>
         <section id="buscador">
-            <h1>Registrate o Identifícate</h1>
+            <h1>Recuperar Cuenta</h1>
         </section>
         <?php
         if($error!=null){

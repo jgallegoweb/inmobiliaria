@@ -143,7 +143,7 @@ $modelo = new ModeloInmueble($bd);;
             <section class="gestform">
                 <div class="minicab">Nuevo inmueble</div>
                 <form action="phpInsertar.php" method="POST" enctype="multipart/form-data" autocomplete="off">
-                    <input type="hidden" name="vendedor" value="<?php echo $objetoUser->getLogin(); ?>">
+                    
                     <label>Dirección: <input type="text" name="direccion" value="" placeholder="C/Piruleta nº10, Bloque 4, 3ºA" maxlength="80"/></label>
                     <label>Población: <input type="text" name="poblacion" value="" placeholder="Motril" maxlength="60"/></label>
                     <label>C.P.: <input type="number" name="codigopostal" value="" placeholder="18600" max="99999"/></label>

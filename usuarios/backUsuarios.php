@@ -6,6 +6,7 @@ $sesion = new Sesion();
 $error=Leer::get("e");
 $sesion->administrador("../index.php?e=31");
 $objeto = $sesion->getUsuario();
+$filas = $modelo->getList();
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,9 +34,19 @@ $objeto = $sesion->getUsuario();
             <ul>
                 <li><a href="../index.php">Inicio</a></li>
                 <li><a href="verAreaCliente.php">área cliente</a></li>
-                <li><a href="">Gestión pisos</a></li>
             </ul>
         </nav>
+        <?php
+        if($error!=null){
+        ?>
+        <section id="error">
+            <?php
+            echo Util::muestraMensaje($error);
+            ?>
+        </section>
+        <?php 
+        }
+        ?>
         <section class="tablacasas">
             <table id="listausuarios">
                 <tr>
@@ -51,7 +62,25 @@ $objeto = $sesion->getUsuario();
                     <th>Editar</th>
                     <th>Borrar</th>
                 </tr>
-                
+                <?php
+                foreach ($filas as $y => $fila) {
+                ?>
+                <tr>
+                    <td><?php echo $fila->getLogin(); ?></td>
+                    <td><?php echo $fila->getNombre(); ?></td>
+                    <td><?php echo $fila->getApellido(); ?></td>
+                    <td><?php echo $fila->getEmail(); ?></td>
+                    <td><?php echo $fila->getFechaalta(); ?></td>
+                    <td><?php echo $fila->getIsactivo(); ?></td> 
+                    <td><?php echo $fila->getIsroot(); ?></td> 
+                    <td><?php echo $fila->getRol(); ?></td>
+                    <td><?php echo $fila->getFechalogin(); ?></td>
+                    <td><a href="backEditarUsuarios.php?login=<?php echo $fila->getLogin(); ?>">Editar</a></td> 
+                    <td><a href="phpBackBorrar.php?login=<?php echo $fila->getLogin(); ?>">Borrar</a></td> 
+                </tr>
+                <?php
+                }
+                ?>
             </table>
         </section>
     </body>

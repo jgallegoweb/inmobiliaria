@@ -1,9 +1,8 @@
 window.addEventListener("load", function(){
-        var ajax = new Ajax();
+        /*var ajax = new Ajax();
         ajax.setUrl("../usuarios/ajaxUsuarios.php");
         ajax.setRespuesta(verrespuesta);
-        ajax.doPeticion();
-    
+        ajax.doPeticion();*/
 });
 
 
