@@ -376,10 +376,14 @@ background: linear-gradient(180deg, rgb(80, 80, 80) 35%, rgb(52, 52, 52) 75%);
 
 .fijo-log{
     text-align: center;
-    width: 600px;
+    width: 290px;
     position: fixed;
+    left: 15px;
 }
 .fijo-log a{
     color:white;
     
+}
+.fijo-log .iden{
+    width: 100%;
 }

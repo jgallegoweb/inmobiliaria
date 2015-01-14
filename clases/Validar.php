@@ -25,6 +25,7 @@ class Validar {
     }
     static function isClave($v){
         //return self::isCondicion($v, '/[A-Za-z0-9]{6,10}$/');
+        //desactivada para poder realizar pruebas más facilmente
         return true;
     }
     static function isURL($v){

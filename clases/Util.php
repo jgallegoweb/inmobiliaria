@@ -144,6 +144,14 @@ class Util {
                 return "Eliminado con exito";
             case 8:
                 return "No se pudo eliminar";
+            case 60:
+                return "Correo no válido";
+            case 61:
+                return "Nombre de usuario no válido";
+            case 62:
+                return "Correo ya existente en el sistema";
+            case 63:
+                return "Contraseña no válida o no coinciden";
             case 99:
                 return "Algo ha salido mal";
             default:

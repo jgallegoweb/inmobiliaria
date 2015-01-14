@@ -40,6 +40,7 @@ $error=  Leer::get("e");
                     <form action="phpLogin.php" method="POST">
                         <label><br/><input type="text" class="login-1" name="login" value="" placeholder="Usuario o Email"/></label>
                         <label><br/><input type="password" class="pass-1" name="clave" value="" placeholder="Password"/></label>
+                        <a href="verRecuperar.php">Olvidé mi clave</a><br/>
                         <input type="submit" value="Iniciar sesión" />
                     </form>
                     

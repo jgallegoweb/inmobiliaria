@@ -8,6 +8,14 @@ $modelo = new modeloUsuario($bd);
 $login = Leer::post("login");
 $clave = Leer::post("clave");
 
+if(Validar::isCorreo($login)){
+    $param['email']=$login;
+    $filas = $modelo->getList("email=:email", $param);
+    if(sizeof($filas)>0){
+        $login = $filas[0]->getLogin();
+    }
+}
+
 $objeto = $modelo->get($login);
 if($objeto->getLogin() == null || !$objeto->getIsactivo()){
     header("Location: verLogin.php?e=40");
