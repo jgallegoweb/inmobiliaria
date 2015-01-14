@@ -46,5 +46,7 @@ if($r ==-1 || $rf == -1){
     header("Location: viewGestion.php?error=6");
     exit();
 }
+$modeloUser = new modeloUsuario($bd);
+$modeloUser->setControl($vendedor, "Nuevo anuncio");
 header("Location: viewGestion.php?error=5");
 exit();

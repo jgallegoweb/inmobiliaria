@@ -4,7 +4,7 @@ require '../require/comun.php';
 
 $bd = new BaseDatos();
 $modelo = new modeloUsuario($bd);
-
+$sesion = new Sesion();
 $login = Leer::get('login');
 $cod = Leer::get('cod');
 
@@ -17,6 +17,7 @@ if($cod != $codigo){
     exit();
 }else{
     $objeto->setIsactivo(1);
-    echo $modelo->editSinClave($objeto, $objeto->getLogin());
+    $modelo->editSinClave($objeto, $objeto->getLogin());
+    $sesion->setUsuario($objeto);
     header("Location: verLogin.php?e=53");
 }

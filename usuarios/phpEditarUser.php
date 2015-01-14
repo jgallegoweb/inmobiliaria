@@ -66,8 +66,9 @@ if($r!=-1){
 
         echo "Estimado $login: <br/> Necesitamos que confirme su dirección de correo para continuar"
                 . "para activarlo solo necesita ir al siguiente enlace: <a href='$url'>Enlace</a>";
+    }else{
+        header("Location: verEditar.php?e=0");
     }
-    //header("Location: verEditar.php?e=0");
 }else{
     
     header("Location: verEditar.php?e=9");

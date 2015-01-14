@@ -7,6 +7,7 @@ $sesion = new Sesion();
 $error=Leer::get("e");
 $sesion->administrador("../index.php?e=31");
 $objeto = $modelo->get(Leer::get("login"));
+$registros = $modelo->getControl(Leer::get("login"));
 ?>
 <!DOCTYPE html>
 <html>
@@ -91,7 +92,21 @@ $objeto = $modelo->get(Leer::get("login"));
                         </form>
                     </div>
                 </div>
+                
             </section>
+            
         </section>
+        <div class="centrador">
+                    <table>
+                        <tr><th>Resgistro</th><th>Fecha y hora</th></tr>
+                    <?php
+                        foreach($registros as $valor){
+                    ?>
+                        <tr><td><?php echo $valor[2]; ?></td><td><?php echo $valor[3]; ?></td></tr>
+                    <?php     
+                        }
+                    ?>
+                    </table>
+                </div>
     </body>
 </html>

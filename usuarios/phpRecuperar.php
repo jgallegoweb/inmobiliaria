@@ -25,5 +25,6 @@ if($objeto->getLogin()==null){
 $codigo = md5($objeto->getEmail().Configuracion::PEZ.$objeto->getLogin());
 $url = Entorno::getEnlaceCarpeta("verNuevaPass.php?cod=$codigo&login=".$objeto->getLogin());
 echo "Hola ".$objeto->getLogin().". Pulse el siguiente enlace para recuperar la pass: <br> ";
+mail($objeto->getEmail(), 'Recuperación de cuenta', $url, "From: info@fotohomeles.hol.es");
 ?>
 <a href='<?php echo $url; ?>'>Enlace</a>

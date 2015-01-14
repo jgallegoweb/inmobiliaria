@@ -16,7 +16,6 @@ class modeloUsuario {
                 . " :rol, null)";
         $param['login']=$objeto->getLogin();
         $x=Util::cifrarPass($objeto->getClave());
-        echo "//$x//";
         $param['clave']=$x;
         $param['nombre']=$objeto->getNombre();
         $param['apellidos']=$objeto->getApellido();
@@ -132,6 +131,31 @@ class modeloUsuario {
         $param['login']=$login;
         $r=$this->bd->setConsulta($sql, $param);
         return $r;
+    }
+    function setControl($login, $accion){
+        $sql="INSERT INTO registro VALUES(null, :login, :accion, now())";
+        $param['login']=$login;
+        $param['accion']=$accion;
+        $r=$this->bd->setConsulta($sql, $param);
+        if(!$r){
+            return -1;
+        }
+        return $r;
+    }
+    function getControl($login){
+        $list = array();
+        $sql = "select * from registro where login=:login order by fechalogin desc";
+        $param['login']=$login;
+        $r = $this->bd->setConsulta($sql, $param);
+        if($r){
+            while($fila = $this->bd->getFila()){
+                $usuario = new Usuario();
+                $list[] = $fila;
+            }
+        }else{
+            return null;
+        }
+        return $list;
     }
     function getListJSON($pagina=0, $rpp=3, $condicion="1=1", $parametro=array(), $orderby = "1"){
         $principio = $pagina*$rpp;
